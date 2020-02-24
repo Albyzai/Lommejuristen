@@ -1,0 +1,9 @@
+.chatWrapper {
+    min-height: 600px;
+    margin: auto;
+    width: 100%;
+}
+
+p {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,13 @@
+.icon {
+    width: auto !important;
+    margin: 20px 0 !important;
+}
+
+
+.Content {
+    min-height: 155px;
+}
+
+.Card {
+    border: none !important;
+}

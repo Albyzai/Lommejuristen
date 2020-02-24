@@ -1,0 +1,29 @@
+.chatLine {
+  display: flex;
+  width: 100%;
+}
+
+.chatLineBlue {
+  justify-content: flex-start;
+}
+
+.chatLineWhite {
+  justify-content: flex-end;
+}
+
+.chatBubble {
+  text-align: left;
+  border-radius: 3px;
+  max-width: 45%;
+  padding: 16px 24px;
+  box-shadow: 0 1px 28px 0 rgba(90, 60, 122, 0.22);
+}
+
+.chatBubbleWhite {
+  background-color: #fff;
+}
+
+.chatBubbleBlue {
+  background-color: #3578e5;
+  color: #fff;
+}

@@ -1,0 +1,18 @@
+.Header {
+    height: 75px;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    transition: .3s ease-in-out;
+    overflow: hidden;
+}
+
+.Header.Scrolled {
+    background: #fff !important;
+    transition: .3s ease-in-out;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15) !important;
+}
+
+.MenuItemWhite {
+    color: #fff !important;
+}

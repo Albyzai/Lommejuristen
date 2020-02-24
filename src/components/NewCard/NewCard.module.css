@@ -1,0 +1,39 @@
+.Card {
+    position: relative;
+    background-color: #fff;
+    color: #000;
+    padding: 4em;
+    border-radius: 10%;
+    min-height: 400px;
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.Card::after {
+    font-family: "Font Awesome Pro";
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    content: '\f0a9';
+    position: absolute;
+    font-size: 2em;
+    color: orange;
+    background: red;
+    top: 50%;
+    margin-top: -25px;
+    right: -38px;
+    z-index: 10;
+}
+
+.Card:last-child {}
+
+.Card:last-child:hover{
+    background: green;
+}
+.Card:last-child::after {
+    display: none;;
+}

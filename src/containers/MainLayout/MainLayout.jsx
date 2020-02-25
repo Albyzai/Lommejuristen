@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, createRef } from 'react';
 import HeaderNavigation from '../../components/HeaderNavigation/HeaderNavigation';
 import Section from '../../components/Section/Section';
 import classes from './MainLayout.module.css';
@@ -6,7 +6,19 @@ import { Typography, Paper } from '@material-ui/core';
 import Zoom from '@material-ui/core/Zoom';
 import FloatingArrow from '../../components/FloatingArrow/FloatingArrow';
 import SubjectIcon from '@material-ui/icons/Subject';
-import { Grid, Icon, Container, Header } from 'semantic-ui-react';
+import _ from 'lodash';
+import {
+  Grid,
+  Icon,
+  Container,
+  Header,
+  Divider,
+  Sticky,
+  Rail,
+  Ref,
+  Segment,
+  Image
+} from 'semantic-ui-react';
 import Card from '../../components/Card/Card';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Accordion from '../../components/Accordion/Accordion';
@@ -157,286 +169,384 @@ const MainLayout = () => {
   //   from: { opacity: 0, marginTop: 100},
   //   to: { opacity: 1, marginTop: 0 }
   // })
+
   const trail = useTrail(cards.length, {
     from: { opacity: 0, marginTop: 100 },
     to: { opacity: 1, marginTop: 0 },
     config: { duration: 1000 }
   });
 
-  const props = useSpring({
-    from: { opacity: 0, marginTop: 100 },
-    to: { opacity: 1, marginTop: 0 },
-    config: { duration: 1000 }
-  });
+  const stickyRef = createRef();
+
+  const Placeholder = () => (
+    <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+  );
 
   return (
     <>
       <HeaderNavigation navItems={navItems} />
-      <div className={classes.background}>
-        <Container
-          fluid
-          style={{ paddingBottom: '150px' }}
-          className={`${classes.introSection}`}
-        >
-          <Grid container centered style={{ paddingTop: '150px' }}>
-            <Grid.Row>
-              <Grid.Column
-                className={classes.columnCentered}
-                computer={8}
-                tablet={8}
-                mobile={16}
-              >
-                <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
-                  Fordi adgangen til juridisk hjælp skal være for alle
-                </p>
-                <p
-                  className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
-                >
-                  Danmarks Første Juridiske Robot
-                </p>
-                <p
-                  className={`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
-                >
-                  Velkommen til Danmarks første juridiske robot. Robotten
-                  vurderer gratis dit problem, og du er derfor sikker på hvad
-                  dine rettigheder er. Den kan også for 29,- kroner skrive din
-                  klage, som du herefter kan sende til butikken.
-                </p>
-              </Grid.Column>
-
-              <Grid.Column
-                className={classes.columnCentered}
-                computer={8}
-                tablet={8}
-                mobile={16}
-              >
-                <Zoom in={true} timeout={1500}>
-                  <img src={mobileImage} className={classes.image} />
-                </Zoom>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column
-                className={classes.columnCentered}
-                computer={16}
-                tablet={16}
-                mobile={16}
-              >
-                <h1 className={`${classes.Heading} ${classes.Inverted}`}>
-                  En problemfri sagsbehandling
-                </h1>
-                <Grid centered>
-                  {trail.map((props, index) => (
-                    <Grid.Column
-                      computer={4}
-                      tablet={4}
-                      mobile={14}
-                      key={index}
-                    >
-                      <animated.div style={props}>
-                        <NewCard
-                          withArrow={trail.length !== index + 1 ? true : false}
-                        >
-                          <h4 className={classes.Heading}>
-                            {cards[index].header}
-                          </h4>
-                          <div
-                            className={`${classes.Subheading} ${classes.Medium}`}
-                          >
-                            {cards[index].description}
-                          </div>
-                        </NewCard>
-                      </animated.div>
-                    </Grid.Column>
-                  ))}
-                </Grid>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          {triangle}
-        </Container>
-        <Container className={classes.Container}>
-          <h1 className={`${classes.DarkText} ${classes.Heading}`}>
-            Anerkendt af
-          </h1>
-          <div className={`${classes.Subheading}`}>
-            Lommejuristen er et anerkendt brand indenfor legaltech,
-            virksomhederne elsker os.
-          </div>
-          <div className={classes.LogosWrapper}>
-            <img src={DRLogo} alt="DR" />
-            <img src={LegoLogo} alt="LEGO" />
-            <img src={TV2Logo} alt="TV2" />
-            <img src={TaenkLogo} alt="Taenk" />
-            <img src={MaerskLogo} alt="MAERSK" />
-          </div>
-        </Container>
-        <Grid container>
+      <Container
+        fluid
+        style={{ paddingBottom: '150px' }}
+        className={`${classes.introSection}`}
+      >
+        <Grid container centered style={{ paddingTop: '150px' }}>
           <Grid.Row>
-            <Grid.Column computer={16}>
-              <h1 className={`${classes.Heading} ${classes.TextLeft}`}>
-                Lovgivnings områder
-              </h1>
+            <Grid.Column
+              className={classes.columnCentered}
+              computer={8}
+              tablet={8}
+              mobile={16}
+            >
+              <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
+                Fordi adgangen til juridisk hjælp skal være for alle
+              </p>
+              <p
+                className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
+              >
+                Danmarks Første Juridiske Robot
+              </p>
+              <p
+                className={`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
+              >
+                Velkommen til Danmarks første juridiske robot. Robotten vurderer
+                gratis dit problem, og du er derfor sikker på hvad dine
+                rettigheder er. Den kan også for 29,- kroner skrive din klage,
+                som du herefter kan sende til butikken.
+              </p>
+            </Grid.Column>
+
+            <Grid.Column
+              className={classes.columnCentered}
+              computer={8}
+              tablet={8}
+              mobile={16}
+            >
+              <Zoom in={true} timeout={1500}>
+                <img src={mobileImage} className={classes.image} />
+              </Zoom>
             </Grid.Column>
           </Grid.Row>
-          {cards.map((card) => (
-            <Grid.Column computer={8}>
-              <NewCard
-                icon={cardIcon}
-                title="Købeloven"
-                text="På nuværende tidspunkt har vi kun købeloven"
-                alignment="horizontal"
-              ></NewCard>
+          <Grid.Row>
+            <Grid.Column
+              className={classes.columnCentered}
+              computer={16}
+              tablet={16}
+              mobile={16}
+            >
+              <h1 className={`${classes.Heading} ${classes.Inverted}`}>
+                En problemfri sagsbehandling
+              </h1>
+              <Grid centered className={classes.IntroCardsContainer}>
+                {trail.map((props, index) => (
+                  <Grid.Column computer={4} tablet={4} mobile={14} key={index}>
+                    <animated.div style={props}>
+                      <NewCard
+                        withArrow={trail.length !== index + 1 ? true : false}
+                      >
+                        <h4 className={classes.Heading}>
+                          {cards[index].header}
+                        </h4>
+                        <div
+                          className={`${classes.Subheading} ${classes.Medium}`}
+                        >
+                          {cards[index].description}
+                        </div>
+                      </NewCard>
+                    </animated.div>
+                  </Grid.Column>
+                ))}
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        {triangle}
+      </Container>
+      <Container className={classes.Container}>
+        <h1 className={`${classes.DarkText} ${classes.Heading}`}>
+          Anerkendt af
+        </h1>
+        <div className={`${classes.Subheading}`}>
+          Lommejuristen er et anerkendt brand indenfor legaltech, virksomhederne
+          elsker os.
+        </div>
+        <div className={classes.LogosWrapper}>
+          <img src={DRLogo} alt="DR" />
+          <img src={LegoLogo} alt="LEGO" />
+          <img src={TV2Logo} alt="TV2" />
+          <img src={TaenkLogo} alt="Taenk" />
+          <img src={MaerskLogo} alt="MAERSK" />
+        </div>
+      </Container>
+      <Grid className={classes.Container} container>
+        <Grid.Row>
+          <Grid.Column computer={16}>
+            <h1 className={`${classes.Heading} ${classes.TextLeft}`}>
+              Lovgivnings områder
+            </h1>
+          </Grid.Column>
+        </Grid.Row>
+        {cards.map((card) => (
+          <Grid.Column computer={8}>
+            <NewCard
+              icon={cardIcon}
+              title="Købeloven"
+              text="På nuværende tidspunkt har vi kun købeloven"
+              alignment="horizontal"
+            ></NewCard>
+          </Grid.Column>
+        ))}
+      </Grid>
+
+      <Ref innerRef={stickyRef}>
+        <Grid container centered columns={2}>
+          <Grid.Column computer={6}>
+            <Sticky context={stickyRef} offset={300}>
+              <div className={classes.Wrapper}>
+                <Typography
+                  variant="h3"
+                  className={`${classes.Heading} ${classes.TextLeft}`}
+                  gutterBottom={true}
+                >
+                  Hjælp robotten med at udforme klagen
+                </Typography>
+                <Typography
+                  variant="h6"
+                  className={`${classes.Subheading} ${classes.TextLeft}`}
+                >
+                  Ved at svare på en række smpørgsmål, vil chatbotten udforme en
+                  skræddersyet klage til netop dit problem
+                </Typography>
+                <CTAButton buttonText="Tal med robotten" />
+              </div>
+            </Sticky>
+          </Grid.Column>
+          <Grid.Column computer={10}>
+            <Chat />
+          </Grid.Column>
+        </Grid>
+      </Ref>
+
+      <Container fluid>
+        <Grid centered>
+          <Grid.Column
+            className={`${classes.columnCentered}`}
+            computer={10}
+            tablet={10}
+            mobile={16}
+          >
+            <div className={classes.ContentContainer}>
+              <Paper elevation={3} className={classes.pdfPaper}>
+                <SubjectIcon style={{ height: '100%', width: '90%' }} />
+                <img
+                  src={PdfIcon}
+                  className={classes.pdfIcon}
+                  alt=""
+                  height="75px"
+                />
+              </Paper>
+            </div>
+          </Grid.Column>
+          <Grid.Column
+            className={`${classes.columnCentered}`}
+            computer={6}
+            tablet={6}
+            mobile={16}
+          >
+            <ScrollAnimation
+              animateIn="slideInRight"
+              className={` ${classes.SlideIn} ${classes.Right}`}
+            >
+              <div className={classes.Wrapper}>
+                <Typography
+                  variant="h3"
+                  className={`${classes.Heading} ${classes.Inverted}`}
+                  gutterBottom={true}
+                >
+                  Få tilsendt klagen øjeblikkeligt
+                </Typography>
+                <Typography
+                  variant="h6"
+                  className={`${classes.Subheading} ${classes.Inverted}`}
+                >
+                  Til slut når robotten har den nødvendige information, vil du
+                  få muligheden for øjeblikkeligt at få tilsendt klagen for kun
+                  29 kr.
+                </Typography>
+                <CTAButton buttonText="Tal med robotten" />
+              </div>
+            </ScrollAnimation>
+          </Grid.Column>
+        </Grid>
+      </Container>
+      <Container>
+        <Header>Hvilke lovområder?</Header>
+        <Grid centered>
+          {lawAreas.map((card) => (
+            <Grid.Column computer={5} tablet={5} mobile={16}>
+              <Card
+                raised={true}
+                color={card.color}
+                iconName={card.icon}
+                header={card.header}
+                description={card.description}
+              />
             </Grid.Column>
           ))}
         </Grid>
-
-        <Container className={classes.Container} fluid>
-          <Grid centered>
-            <Grid.Column
-              className={`${classes.columnCentered}`}
-              computer={6}
-              tablet={6}
-              mobile={16}
+      </Container>
+      <Container className={classes.Container}>
+        <Grid centered>
+          <Grid.Column
+            className={classes.columnCentered}
+            computer={8}
+            tablet={8}
+            mobile={16}
+          >
+            <Typography
+              variant="h3"
+              className={`${classes.Heading} ${classes.Inverted}`}
+              gutterBottom={true}
             >
-              <ScrollAnimation
-                animateIn="slideInLeft"
-                animateOut="slideOutLeft"
-                className={` ${classes.SlideIn} ${classes.Left}`}
-              >
-                <div className={classes.Wrapper}>
-                  <Typography
-                    variant="h3"
-                    className={`${classes.Heading} ${classes.Inverted}`}
-                    gutterBottom={true}
+              Ofte stillede spørgsmål
+            </Typography>
+            <Typography
+              variant="h6"
+              className={`${classes.Subheading} ${classes.Inverted}`}
+            >
+              Få svar på mange af de ofte stillede spørgsmål
+            </Typography>
+          </Grid.Column>
+          <Grid.Column
+            className={classes.columnCentered}
+            computer={8}
+            tablet={8}
+            mobile={16}
+          >
+            <Accordion options={FAQOptions} />
+          </Grid.Column>
+        </Grid>
+      </Container>
+      <footer>
+        <Grid container>
+          <Grid.Row>
+            <Grid.Column computer={16}>
+              <Divider />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column computer={4}>
+              <ul className={classes.FooterList}>
+                <li>
+                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
+                    Lommejuristen
+                  </h3>
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.NoLink} ${classes.TextLeft}`}
+                >
+                  +45 28 40 45 00
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.NoLink} ${classes.TextLeft}`}
+                >
+                  Åbningstider: {'\n'}
+                  Mandag-Fredag: 8-16 {'\n'}
+                  Lørdag-Søndag: lukket
+                </li>
+              </ul>
+            </Grid.Column>
+            <Grid.Column computer={3}>
+              <ul className={classes.FooterList}>
+                <li>
+                  <h3 className={`${classes.heading}  ${classes.TextLeft}`}>
+                    Følg os
+                  </h3>
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Facebook
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Medium
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Twitter
+                </li>
+              </ul>
+            </Grid.Column>
+            <Grid.Column computer={3}>
+              <ul className={classes.FooterList}>
+                <li>
+                  <h3
+                    className={`${classes.heading} ${classes.Normal} ${classes.TextLeft}`}
                   >
-                    Hjælp robotten med at udforme klagen
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    className={`${classes.Subheading} ${classes.Inverted}`}
-                  >
-                    Ved at svare på en række smpørgsmål, vil chatbotten udforme
-                    en skræddersyet klage til netop dit problem
-                  </Typography>
-                  <CTAButton buttonText="Tal med robotten" />
-                </div>
-              </ScrollAnimation>
+                    Virksomhed
+                  </h3>
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Om os
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Blog
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Presse
+                </li>
+              </ul>
             </Grid.Column>
-
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={10}
-              tablet={10}
-              mobile={16}
-            >
-              <div className={classes.ContentContainer}>
-                <Chat className={classes.Chat} />
-              </div>
+            <Grid.Column computer={3}>
+              <ul className={classes.FooterList}>
+                <li>
+                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
+                    Produkt
+                  </h3>
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  FAQ
+                </li>
+              </ul>
             </Grid.Column>
-          </Grid>
-        </Container>
-        <Container fluid>
-          <Grid centered>
-            <Grid.Column
-              className={`${classes.columnCentered}`}
-              computer={10}
-              tablet={10}
-              mobile={16}
-            >
-              <div className={classes.ContentContainer}>
-                <Paper elevation={3} className={classes.pdfPaper}>
-                  <SubjectIcon style={{ height: '100%', width: '90%' }} />
-                  <img
-                    src={PdfIcon}
-                    className={classes.pdfIcon}
-                    alt=""
-                    height="75px"
-                  />
-                </Paper>
-              </div>
+            <Grid.Column computer={3}>
+              <ul className={classes.FooterList}>
+                <li>
+                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
+                    Juridisk
+                  </h3>
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Privatpolitik
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Handelsbetingelser
+                </li>
+                <li
+                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
+                >
+                  Cookies Politik
+                </li>
+              </ul>
             </Grid.Column>
-            <Grid.Column
-              className={`${classes.columnCentered}`}
-              computer={6}
-              tablet={6}
-              mobile={16}
-            >
-              <ScrollAnimation
-                animateIn="slideInRight"
-                className={` ${classes.SlideIn} ${classes.Right}`}
-              >
-                <div className={classes.Wrapper}>
-                  <Typography
-                    variant="h3"
-                    className={`${classes.Heading} ${classes.Inverted}`}
-                    gutterBottom={true}
-                  >
-                    Få tilsendt klagen øjeblikkeligt
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    className={`${classes.Subheading} ${classes.Inverted}`}
-                  >
-                    Til slut når robotten har den nødvendige information, vil du
-                    få muligheden for øjeblikkeligt at få tilsendt klagen for
-                    kun 29 kr.
-                  </Typography>
-                  <CTAButton buttonText="Tal med robotten" />
-                </div>
-              </ScrollAnimation>
-            </Grid.Column>
-          </Grid>
-        </Container>
-        <Container>
-          <Header>Hvilke lovområder?</Header>
-          <Grid centered>
-            {lawAreas.map((card) => (
-              <Grid.Column computer={5} tablet={5} mobile={16}>
-                <Card
-                  raised={true}
-                  color={card.color}
-                  iconName={card.icon}
-                  header={card.header}
-                  description={card.description}
-                />
-              </Grid.Column>
-            ))}
-          </Grid>
-        </Container>
-        <Container className={classes.Container}>
-          <Grid centered>
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={8}
-              tablet={8}
-              mobile={16}
-            >
-              <Typography
-                variant="h3"
-                className={`${classes.Heading} ${classes.Inverted}`}
-                gutterBottom={true}
-              >
-                Ofte stillede spørgsmål
-              </Typography>
-              <Typography
-                variant="h6"
-                className={`${classes.Subheading} ${classes.Inverted}`}
-              >
-                Få svar på mange af de ofte stillede spørgsmål
-              </Typography>
-            </Grid.Column>
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={8}
-              tablet={8}
-              mobile={16}
-            >
-              <Accordion options={FAQOptions} />
-            </Grid.Column>
-          </Grid>
-        </Container>
-      </div>
+          </Grid.Row>
+        </Grid>
+      </footer>
     </>
   );
 };

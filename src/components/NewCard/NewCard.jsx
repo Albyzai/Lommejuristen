@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './NewCard.module.css';
 
 const NewCard = ({ icon, title, text, withArrow, alignment, children }) => {
-  console.log('witharrow:', withArrow);
   return (
     <div
       className={`${classes.Card} ${withArrow ? classes.WithArrow : ''} ${

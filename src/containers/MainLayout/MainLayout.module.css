@@ -38,7 +38,7 @@ body {
 
 .Container {
   position: relative;
-  padding-bottom: 150px;
+  padding-bottom: 150px !important;
   /* padding: 125px 0; */
 }
 
@@ -190,8 +190,16 @@ h6.Heading {
   margin-bottom: 50px;
 }
 
+footer .Subheading {
+  margin-bottom: 0;
+}
+
 .Subheading.Small {
   font-size: 0.9em;
+}
+
+.Subheading.Normal {
+  font-size: 1em;
 }
 
 .Subheading.Medium {
@@ -205,6 +213,10 @@ h6.Heading {
 
 .Subheading.Inverted {
   color: #fff;
+}
+
+.SubHeading.NoMargin {
+  margin-bottom: 0;
 }
 
 .Relative {
@@ -229,6 +241,25 @@ h6.Heading {
   color: #fff;
   width: 70%;
   text-align: center;
+}
+
+.FooterList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.FooterList li {
+  padding: 7.5px 0;
+}
+
+.FooterList li.Subheading:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.FooterList li.Subheading.NoLink:hover {
+  text-decoration: none;
+  cursor: default;
 }
 
 .Wrapper .heading {
@@ -283,6 +314,10 @@ h6.Heading {
 .icon {
   width: auto !important;
   margin: 20px 0 !important;
+}
+
+.IntroCardsContainer {
+  height: 450px;
 }
 
 .pdfIcon {

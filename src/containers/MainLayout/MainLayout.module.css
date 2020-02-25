@@ -1,5 +1,5 @@
 body {
-  background-color: #F5F6F8;
+  background-color: #f5f6f8;
 }
 
 .main {
@@ -9,6 +9,28 @@ body {
 .background {
 }
 
+.DarkText {
+  color: #404f54;
+}
+
+.LogosWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-height: 50px;
+}
+
+.LogosWrapper img {
+  filter: grayscale(100%);
+  transition: 0.5s ease-in-out;
+  height: 50px;
+}
+
+.LogosWrapper img:hover {
+  filter: none;
+}
+
 .section {
   display: flex;
   flex-wrap: 'wrap';
@@ -16,6 +38,7 @@ body {
 
 .Container {
   position: relative;
+  padding-bottom: 150px;
   /* padding: 125px 0; */
 }
 
@@ -29,7 +52,6 @@ body {
   /* font-family: 'Varela Round', sans-serif; */
   background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
 }
-
 
 .headerShape {
   position: absolute;
@@ -74,7 +96,7 @@ body {
 }
 
 .shapeFill {
-  fill: #F5F6F8;
+  fill: #f5f6f8;
 }
 
 .roundShape {
@@ -119,10 +141,74 @@ body {
   width: 100%;
 }
 
+.TextLeft {
+  text-align: left;
+}
+
 .Heading {
+  font-family: 'Roboto';
+  color: #404f54;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 2.5em;
   width: 100%;
+  margin-bottom: 40px;
+}
+
+h1.Heading {
+  font-size: 2.5em;
+}
+
+h2.Heading {
+  font-size: 2em;
+}
+
+h3.Heading {
+  font-size: 1.75em;
+}
+
+h4.Heading {
+  font-size: 1.5em;
+}
+
+h5.Heading {
+  font-size: 1.25em;
+}
+
+h6.Heading {
+  font-size: 1.1em;
+}
+
+.Heading.Inverted {
+  color: #fff;
+}
+
+.Subheading {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #818a8f;
+  margin-bottom: 50px;
+}
+
+.Subheading.Small {
+  font-size: 0.9em;
+}
+
+.Subheading.Medium {
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+
+.Subheading.Large {
+  font-size: 1.5em;
+}
+
+.Subheading.Inverted {
+  color: #fff;
+}
+
+.Relative {
+  position: relative;
 }
 
 .heading {

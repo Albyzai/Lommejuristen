@@ -1,13 +1,22 @@
-import React from 'react'
-import classes from './NewCard.module.css'
+import React from 'react';
+import classes from './NewCard.module.css';
 
-const NewCard = ({children}) => {
+const NewCard = ({ icon, title, text, withArrow, alignment, children }) => {
+  console.log('witharrow:', withArrow);
+  return (
+    <div
+      className={`${classes.Card} ${withArrow ? classes.WithArrow : ''} ${
+        alignment === 'horizontal' ? classes.Horizontal : ''
+      }`}
+    >
+      {icon ? <div className={classes.IconWrapper}>{icon}</div> : null}
+      <div className={classes.Content}>
+        {title ? <h4 className={classes.Heading}>{title}</h4> : null}
+        {text ? <p className={classes.Subheading}>{text}</p> : null}
+        {children}
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <div className={classes.Card}>
-            {children}
-        </div>
-    )
-}
-
-export default NewCard
+export default NewCard;

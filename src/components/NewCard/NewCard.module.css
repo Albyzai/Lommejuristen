@@ -1,39 +1,147 @@
+/* .Card {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  padding: 3em;
+  border-radius: 5%;
+  min-height: 400px;
+  max-height: 500px;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+} */
+
 .Card {
-    position: relative;
-    background-color: #fff;
-    color: #000;
-    padding: 4em;
-    border-radius: 10%;
-    min-height: 400px;
-    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  padding: 3em;
+  border-radius: 10px;
+  min-height: 400px;
+  max-height: 500px;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05), 0 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+.IconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.Card.Horizontal {
+  padding: 2em;
+  min-height: 175px;
+  max-height: 175px;
+  flex-direction: row;
 }
 
 .Card::after {
-    font-family: "Font Awesome Pro";
-    display: block;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    content: '\f0a9';
-    position: absolute;
-    font-size: 2em;
-    color: orange;
-    background: red;
+  transition: 3s ease-in-out;
+}
+
+.Card.WithArrow::after {
+  font-family: 'Font Awesome 5 Pro';
+  display: block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  content: '\f054';
+  position: absolute;
+  font-size: 1.2em;
+  color: #0700dd;
+  background: #fff;
+  border: 1px solid #0700dd;
+  z-index: 10;
+  text-align: center;
+  line-height: 50px;
+
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.Heading {
+  font-family: 'Roboto';
+  color: #404f54;
+  font-weight: 400;
+  font-size: 2.5em;
+  width: 100%;
+  text-align: left;
+}
+
+.Subheading {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.1em;
+  color: #818a8f;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+h1.Heading {
+  font-size: 2.5em;
+}
+
+h2.Heading {
+  font-size: 2em;
+}
+
+h3.Heading {
+  font-size: 1.75em;
+}
+
+h4.Heading {
+  font-size: 1.5em;
+}
+
+h5.Heading {
+  font-size: 1.25em;
+}
+
+h6.Heading {
+  font-size: 1.1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .Card.WithArrow::after {
+    content: '\f054';
+    right: -38px;
     top: 50%;
     margin-top: -25px;
-    right: -38px;
-    z-index: 10;
+  }
 }
 
-.Card:last-child {}
+@media only screen and (max-width: 767px) {
+  .Card {
+    min-height: 200px;
+  }
 
-.Card:last-child:hover{
-    background: green;
-}
-.Card:last-child::after {
-    display: none;;
+  .Card.WithArrow::after {
+    content: '\f107';
+    right: 50%;
+    bottom: -38px;
+    margin-right: -25px;
+  }
 }

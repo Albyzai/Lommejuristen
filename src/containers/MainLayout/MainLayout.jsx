@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import HeaderNavigation from '../../components/HeaderNavigation/HeaderNavigation';
 import Section from '../../components/Section/Section';
 import classes from './MainLayout.module.css';
@@ -10,8 +10,9 @@ import { Grid, Icon, Container, Header } from 'semantic-ui-react';
 import Card from '../../components/Card/Card';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Accordion from '../../components/Accordion/Accordion';
-import CTAButton from '../../components/CTAButton/CTAButton'
-import NewCard from '../../components/NewCard/NewCard'
+import CTAButton from '../../components/CTAButton/CTAButton';
+import NewCard from '../../components/NewCard/NewCard';
+import { useSpring, animated, useTrail } from 'react-spring';
 
 //  assets
 import mobileImage from '../../assets/images/newmobile.png';
@@ -19,6 +20,11 @@ import PdfIcon from '../../assets/icons/pdf-icon.svg';
 import Chat from '../../components/Chat/Chat';
 import Shape from '../../assets/images/header-bottom.svg';
 import HalfRoundShape from '../../assets/images/half-round.svg';
+import TV2Logo from '../../assets/images/tv2-logo.svg';
+import TaenkLogo from '../../assets/images/taenk-logo.svg';
+import DRLogo from '../../assets/images/dr-logo.svg';
+import MaerskLogo from '../../assets/images/maersk-logo.svg';
+import LegoLogo from '../../assets/images/lego-logo.svg';
 
 const navItems = [{ name: 'Artikler' }];
 
@@ -36,6 +42,13 @@ const cards = [
     header: 'Vi skriver klagen!',
     description:
       'For 29,- kroner skriver robotten klagen lige præcis til din situation \n\n Du kan herefter sende klagen videre til butikken.'
+  },
+  {
+    color: 'blue',
+    icon: 'wait',
+    header: '5 Minutter',
+    description:
+      'Det tager kun 5 minutter at trykke sig igennem vores interaktive skema \n\n Slip for at søge flere timer på nettet.'
   },
   {
     color: 'blue',
@@ -68,7 +81,7 @@ const FAQOptions = [
   }
 ];
 
-const mainLayout = () => {
+const MainLayout = () => {
   const svg = (
     <div className={classes.headerShape}>
       <svg
@@ -94,13 +107,22 @@ const mainLayout = () => {
   //   </div>
   // )
 
+  const cardIcon = <img src={PdfIcon} alt="" height="100%" />;
+
   const triangle = (
     <div className={classes.TriangleShape}>
-      <svg className={classes.shapeFill} xmlns="http://www.w3.org/2000/svg" viewBox="5 0 249 130">
-          <polygon  class="cls-1" points="0.46 0.76 0.46 132.76 257.46 132.76 0.46 0.76"/>
+      <svg
+        className={classes.shapeFill}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="5 0 249 130"
+      >
+        <polygon
+          class="cls-1"
+          points="0.46 0.76 0.46 132.76 257.46 132.76 0.46 0.76"
+        />
       </svg>
     </div>
-  )
+  );
 
   const halfRoundSVG = (
     <div className={classes.roundShape}>
@@ -125,6 +147,28 @@ const mainLayout = () => {
     </div>
   );
 
+  // const springRef = useRef();
+  // const props = useSpring({ ...values, ref: springRef });
+
+  // const transitionRef = useRef();
+  // const transitions = useTransition({ ...values, ref: transitionRef });
+
+  // const trail = useTrail(cards.length, {
+  //   from: { opacity: 0, marginTop: 100},
+  //   to: { opacity: 1, marginTop: 0 }
+  // })
+  const trail = useTrail(cards.length, {
+    from: { opacity: 0, marginTop: 100 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 1000 }
+  });
+
+  const props = useSpring({
+    from: { opacity: 0, marginTop: 100 },
+    to: { opacity: 1, marginTop: 0 },
+    config: { duration: 1000 }
+  });
+
   return (
     <>
       <HeaderNavigation navItems={navItems} />
@@ -134,85 +178,119 @@ const mainLayout = () => {
           style={{ paddingBottom: '150px' }}
           className={`${classes.introSection}`}
         >
-          <Grid centered style={{ paddingTop: '150px' }}>
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={6}
-              tablet={6}
-              mobile={16}
-            >
-              <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
-                Fordi adgangen til juridisk hjælp skal være for alle
-              </p>
-              <p className={`${classes.TextMargin} ${classes.Heading}`}>
-                Danmarks Første Juridiske Robot
-              </p>
-              <p className={`${classes.TextMargin} ${classes.subheading}`}>
-                Velkommen til Danmarks første juridiske robot. Robotten vurderer
-                gratis dit problem, og du er derfor sikker på hvad dine
-                rettigheder er. Den kan også for 29,- kroner skrive din klage,
-                som du herefter kan sende til butikken.
-              </p>
-            </Grid.Column>
+          <Grid container centered style={{ paddingTop: '150px' }}>
+            <Grid.Row>
+              <Grid.Column
+                className={classes.columnCentered}
+                computer={8}
+                tablet={8}
+                mobile={16}
+              >
+                <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
+                  Fordi adgangen til juridisk hjælp skal være for alle
+                </p>
+                <p
+                  className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
+                >
+                  Danmarks Første Juridiske Robot
+                </p>
+                <p
+                  className={`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
+                >
+                  Velkommen til Danmarks første juridiske robot. Robotten
+                  vurderer gratis dit problem, og du er derfor sikker på hvad
+                  dine rettigheder er. Den kan også for 29,- kroner skrive din
+                  klage, som du herefter kan sende til butikken.
+                </p>
+              </Grid.Column>
 
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={8}
-              tablet={8}
-              mobile={16}
-            >
-              <Zoom in={true} timeout={1500}>
-                <img src={mobileImage} className={classes.image} />
-              </Zoom>
-            </Grid.Column>
-            <Grid.Column
-            className={classes.columnCentered}
-            computer={12}
-            tablet={12}
-            mobile={16}>
-              <Grid centered>
-              {cards.map((card) => (
-                <Grid.Column computer={5} tablet={5} mobile={16}>
-                  {/* <Card
-                    raised={true}
-                    iconName={card.icon}
-                    header={card.header}
-                    description={card.description}
-                    className={classes.TestCard}
-                  /> */}
-                  <NewCard>
-                    <h1>{card.header}</h1>
-                    <p>{card.description}</p>
-                  </NewCard>
-                </Grid.Column>
-              ))}
-            </Grid>
-              
-            </Grid.Column>
+              <Grid.Column
+                className={classes.columnCentered}
+                computer={8}
+                tablet={8}
+                mobile={16}
+              >
+                <Zoom in={true} timeout={1500}>
+                  <img src={mobileImage} className={classes.image} />
+                </Zoom>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column
+                className={classes.columnCentered}
+                computer={16}
+                tablet={16}
+                mobile={16}
+              >
+                <h1 className={`${classes.Heading} ${classes.Inverted}`}>
+                  En problemfri sagsbehandling
+                </h1>
+                <Grid centered>
+                  {trail.map((props, index) => (
+                    <Grid.Column
+                      computer={4}
+                      tablet={4}
+                      mobile={14}
+                      key={index}
+                    >
+                      <animated.div style={props}>
+                        <NewCard
+                          withArrow={trail.length !== index + 1 ? true : false}
+                        >
+                          <h4 className={classes.Heading}>
+                            {cards[index].header}
+                          </h4>
+                          <div
+                            className={`${classes.Subheading} ${classes.Medium}`}
+                          >
+                            {cards[index].description}
+                          </div>
+                        </NewCard>
+                      </animated.div>
+                    </Grid.Column>
+                  ))}
+                </Grid>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
-          {/* {svg} */}
           {triangle}
-          {/* <Container fluid className={`${classes.Container} ${classes.White}`}>
-          <Header>Hvad kan robotten?</Header>
-          <ScrollAnimation animateIn="fadeInUp">
-            <Grid centered>
-              {cards.map((card) => (
-                <Grid.Column computer={5} tablet={5} mobile={16}>
-                  <Card
-                    raised={true}
-                    iconName={card.icon}
-                    header={card.header}
-                    description={card.description}
-                    className={classes.TestCard}
-                  />
-                </Grid.Column>
-              ))}
-            </Grid>
-          </ScrollAnimation>
-        </Container> */}
         </Container>
+        <Container className={classes.Container}>
+          <h1 className={`${classes.DarkText} ${classes.Heading}`}>
+            Anerkendt af
+          </h1>
+          <div className={`${classes.Subheading}`}>
+            Lommejuristen er et anerkendt brand indenfor legaltech,
+            virksomhederne elsker os.
+          </div>
+          <div className={classes.LogosWrapper}>
+            <img src={DRLogo} alt="DR" />
+            <img src={LegoLogo} alt="LEGO" />
+            <img src={TV2Logo} alt="TV2" />
+            <img src={TaenkLogo} alt="Taenk" />
+            <img src={MaerskLogo} alt="MAERSK" />
+          </div>
+        </Container>
+        <Grid container>
+          <Grid.Row>
+            <Grid.Column computer={16}>
+              <h1 className={`${classes.Heading} ${classes.TextLeft}`}>
+                Lovgivnings områder
+              </h1>
+            </Grid.Column>
+          </Grid.Row>
+          {cards.map((card) => (
+            <Grid.Column computer={8}>
+              <NewCard
+                icon={cardIcon}
+                title="Købeloven"
+                text="På nuværende tidspunkt har vi kun købeloven"
+                alignment="horizontal"
+              ></NewCard>
+            </Grid.Column>
+          ))}
+        </Grid>
 
-        
         <Container className={classes.Container} fluid>
           <Grid centered>
             <Grid.Column
@@ -229,12 +307,15 @@ const mainLayout = () => {
                 <div className={classes.Wrapper}>
                   <Typography
                     variant="h3"
-                    className={classes.heading}
+                    className={`${classes.Heading} ${classes.Inverted}`}
                     gutterBottom={true}
                   >
                     Hjælp robotten med at udforme klagen
                   </Typography>
-                  <Typography variant="h6" className={classes.subheading}>
+                  <Typography
+                    variant="h6"
+                    className={`${classes.Subheading} ${classes.Inverted}`}
+                  >
                     Ved at svare på en række smpørgsmål, vil chatbotten udforme
                     en skræddersyet klage til netop dit problem
                   </Typography>
@@ -288,12 +369,15 @@ const mainLayout = () => {
                 <div className={classes.Wrapper}>
                   <Typography
                     variant="h3"
-                    className={classes.heading}
+                    className={`${classes.Heading} ${classes.Inverted}`}
                     gutterBottom={true}
                   >
                     Få tilsendt klagen øjeblikkeligt
                   </Typography>
-                  <Typography variant="h6" className={classes.subheading}>
+                  <Typography
+                    variant="h6"
+                    className={`${classes.Subheading} ${classes.Inverted}`}
+                  >
                     Til slut når robotten har den nødvendige information, vil du
                     få muligheden for øjeblikkeligt at få tilsendt klagen for
                     kun 29 kr.
@@ -330,12 +414,15 @@ const mainLayout = () => {
             >
               <Typography
                 variant="h3"
-                className={classes.heading}
+                className={`${classes.Heading} ${classes.Inverted}`}
                 gutterBottom={true}
               >
                 Ofte stillede spørgsmål
               </Typography>
-              <Typography variant="h6" className={classes.subheading}>
+              <Typography
+                variant="h6"
+                className={`${classes.Subheading} ${classes.Inverted}`}
+              >
                 Få svar på mange af de ofte stillede spørgsmål
               </Typography>
             </Grid.Column>
@@ -354,96 +441,4 @@ const mainLayout = () => {
   );
 };
 
-// const mainLayout = () => {
-//     return (
-//         <React.Fragment>
-//             <HeaderNavigation navItems={navItems} />
-//             <main className={classes.main}>
-//                 <Section className={classes.section} color={'#fff'}>
-//                     <Grid container justify="center" spacing={10}>
-//                         <Grid item xs={12} sm={6} className={classes.grid} >
-//                             <div>
-//                                 <Typography variant='h3' className={classes.heading} gutterBottom={true}>
-//                                     Øjeblikkelig juridisk hjælp
-//                                 </Typography>
-//                                 <Typography variant='h6' className={classes.subheading}>
-//                                     Den første danske juridiske chatbot, få hurtig hjælp til dine problemer for kun 29 kr
-//                                 </Typography>
-//                             </div>
-//                         </Grid>
-
-//                         <Grid item xs={12} sm={6}>
-//                             <Zoom in={true} timeout={1500}>
-//                                 <img src={mobileImage} className={classes.image} />
-//                             </Zoom>
-//                         </Grid>
-//                     </Grid>
-//                 </Section>
-//                 <Section className={classes.section} >
-//                     <Grid container justify="center" spacing={3}>
-//                         <Grid item xs={12} sm={4} className={classes.grid} >
-//                             <Paper>
-//                                 Gratis rådgivning
-//                             </Paper>
-//                             <Paper>
-//                                 Vi skriver klagen
-//                             </Paper>
-//                             <Paper>
-//                                 5 minutter
-//                             </Paper>
-//                         </Grid>
-//                         <Grid item xs={12} sm={4} className={classes.grid} >
-
-//                         </Grid>
-//                         <Grid item xs={12} sm={4} className={classes.grid} >
-
-//                         </Grid>
-
-//                     </Grid>
-//                 </Section>
-//                 <Section className={classes.section} >
-//                     <Grid container justify="center" spacing={3}>
-//                         <Grid item xs={12} sm={6} className={classes.grid} >
-//                             <div>
-//                                 <Typography variant='h3' className={classes.heading} gutterBottom={true}>
-//                                     Hjælp robotten med at udforme klagen
-//                                 </Typography>
-//                                 <Typography variant='h6' className={classes.subheading}>
-//                                     Ved at svare på en række smpørgsmål, vil chatbotten udforme en skræddersyet klage til netop dit problem
-//                                 </Typography>
-//                             </div>
-//                         </Grid>
-
-//                         <Grid item xs={12} sm={6}>
-//                             <Chat />
-//                         </Grid>
-//                     </Grid>
-//                 </Section>
-//                 <Section className={classes.section}>
-//                     <Grid container justify="center" spacing={3}>
-//                         <Grid item xs={12} sm={6} className={classes.grid} >
-//                             <div>
-//                                 <Typography variant='h3' className={classes.heading} gutterBottom={true}>
-//                                     Få tilsendt klagen øjeblikkeligt
-//                                 </Typography>
-//                                 <Typography variant='h6' className={classes.subheading}>
-//                                     Til slut når robotten har den nødvendige information, vil du få muligheden for øjeblikkeligt at få tilsendt klagen for kun 29 kr.
-//                                 </Typography>
-//                             </div>
-//                         </Grid>
-
-//                         <Grid item xs={12} sm={6}>
-//                             <Paper elevation={3} className={classes.pdfPaper}>
-//                                 <SubjectIcon style={{height: '100%', width: '90%'}} />
-//                                 <img src={PdfIcon} className={classes.pdfIcon} alt="" height="75px" />
-//                             </Paper>
-//                         </Grid>
-//                     </Grid>
-//                 </Section>
-//             </main>
-//             <FloatingArrow />
-//         </React.Fragment>
-//     )
-// }
-
-export default mainLayout;
+export default MainLayout;

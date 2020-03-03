@@ -154,25 +154,23 @@ const Chat = () => {
           </div>
           <div className={classes.PaymentFormWrapper}>
             <div className={`${classes.PaymentInput} ${classes.CardNumber}`}>
-              <i class="fal fa-credit-card"></i>
-              <span>Kortnummer</span>
+              <div className={classes.InputTextWrapper}>
+                <i class="fal fa-credit-card"></i>
+                <span>Kortnummer</span>
+              </div>
             </div>
-            <div className={`${classes.PaymentInput} ${classes.CardNumber}`}>
-              <i class="far fa-calendar"></i>
-              <span>MM/ÅÅ</span>
+            <div className={`${classes.PaymentInput} ${classes.ExpiryDate}`}>
+              <div className={classes.InputTextWrapper}>
+                <i class="far fa-calendar"></i>
+                <span>MM/ÅÅ</span>
+              </div>
             </div>
-            <div className={`${classes.PaymentInput} ${classes.CardNumber}`}>
-              <i class="fal fa-lock"></i>
-              <span>CVC</span>
+            <div className={`${classes.PaymentInput} ${classes.CVC}`}>
+              <div className={classes.InputTextWrapper}>
+                <i class="fal fa-lock"></i>
+                <span>CVC</span>
+              </div>
             </div>
-            <input
-              type="tel"
-              placeholder="Kortnummer"
-              name="cardnumber"
-              id=""
-            />
-            <input type="tel" placeholder="MM/ÅÅ" name="cardnumber" id="" />
-            <input type="number" placeholder="CVC" name="cardnumber" id="" />
           </div>
         </div>
       ) : null}

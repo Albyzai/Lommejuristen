@@ -25,6 +25,7 @@ import Accordion from '../../components/Accordion/Accordion';
 import CTAButton from '../../components/CTAButton/CTAButton';
 import NewCard from '../../components/NewCard/NewCard';
 import { useSpring, animated, useTrail } from 'react-spring';
+import NewChat from '../../components/NewChat/NewChat';
 
 //  assets
 import mobileImage from '../../assets/images/newmobile.png';
@@ -321,12 +322,12 @@ const MainLayout = () => {
               </div>
             </Sticky>
           </Grid.Column>
-          <Grid.Column computer={10}>
-            <Chat />
-          </Grid.Column>
+          <Grid.Column computer={10}>{/* <Chat /> */}</Grid.Column>
         </Grid>
       </Ref>
-
+      <Container fluid style={{ height: '2000px' }}>
+        <NewChat />
+      </Container>
       <Container fluid>
         <Grid centered>
           <Grid.Column

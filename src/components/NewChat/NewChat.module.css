@@ -1,0 +1,333 @@
+.ChatContainer {
+  width: 100%;
+  height: 100%;
+  background: red;
+  position: relative;
+}
+
+.Block {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
+
+.chatWrapper {
+  min-height: 600px;
+  margin: auto;
+  width: 100%;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.DotContainer {
+  width: 100%;
+  height: 30px;
+  margin: 10px;
+}
+
+.Dot {
+  position: ;
+  display: block;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #818a8f;
+}
+
+.ContentContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.EmailInput {
+  border-radius: 4px;
+  padding: 15px 20px;
+  display: flex;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f70026;
+  color: #f70026;
+  box-shadow: 0 0 14px 1px #f70026;
+  transition: 0.25s;
+  margin-top: 25px;
+  width: 45%;
+}
+
+.Hide {
+  visibility: hidden;
+}
+
+.Show {
+  visibility: visible;
+}
+
+.PaymentWindow {
+  background-color: #f5f5f7;
+  border: 1px solid #ccc;
+  box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 hsla(0, 0%, 100%, 0.65);
+  height: 300px;
+  width: 275px;
+  margin: auto;
+  padding-bottom: 36px;
+  border-radius: 6px;
+}
+
+.PaymentWindowHeader {
+  background-color: #e8e9eb;
+  padding: 12px 36px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.PaymentWindowHeader h1 {
+  color: #000;
+  font-weight: 700;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 17;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.PaymentWindowHeader .Email {
+  max-width: 100px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  color: #919199;
+  text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.4);
+  border-bottom: 1px solid #ccc;
+}
+
+.PaymentInput {
+  height: 37px;
+  background: #fff;
+  color: #5b5b65;
+}
+
+.PaymentFormWrapper {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px 0 hsla(240, 1%, 49%, 0.3),
+    0 1px 0 0 hsla(0, 0%, 100%, 0.7);
+}
+
+.PaymentInput.CardNumber {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  width: 100%;
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+}
+
+.PaymentInput.ExpiryDate {
+  border-left-color: hsla(240, 1%, 49%, 0.25);
+  border-bottom-color: hsla(240, 1%, 49%, 0.25);
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 4px;
+  width: 50%;
+  display: inline-block;
+}
+
+.PaymentInput.CVC {
+  border-bottom-right-radius: 4px;
+  width: 50%;
+  display: inline-block;
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+  border-top: none;
+  border-bottom-color: hsla(240, 1%, 49%, 0.25);
+  border-right-color: hsla(240, 1%, 49%, 0.25);
+}
+
+.InputTextWrapper {
+  height: 100%;
+  padding: 10px;
+}
+
+.Wrapper {
+  color: #fff;
+  width: 70%;
+  text-align: center;
+}
+
+.Heading {
+  font-family: 'Roboto';
+  color: #404f54;
+  font-weight: 700;
+  font-size: 2.5em;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+h1.Heading {
+  font-size: 2.5em;
+}
+
+h2.Heading {
+  font-size: 2em;
+}
+
+h3.Heading {
+  font-size: 1.75em;
+}
+
+h4.Heading {
+  font-size: 1.5em;
+}
+
+h5.Heading {
+  font-size: 1.25em;
+}
+
+h6.Heading {
+  font-size: 1.1em;
+}
+
+.Heading.Inverted {
+  color: #fff;
+}
+
+.Subheading {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #818a8f;
+  margin-bottom: 50px;
+}
+
+.TextLeft {
+  text-align: left;
+}
+
+.PaymentWindow {
+  background-color: #f5f5f7;
+  border: 1px solid #ccc;
+  box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 hsla(0, 0%, 100%, 0.65);
+  height: 300px;
+  width: 275px;
+  padding-bottom: 36px;
+  border-radius: 6px;
+}
+
+.PaymentWindowHeader {
+  background-color: #e8e9eb;
+  padding: 12px 36px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.PaymentWindowHeader h1 {
+  color: #000;
+  font-weight: 700;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 17;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.PaymentWindowHeader .Email {
+  max-width: 100px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  color: #919199;
+  text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.4);
+  border-bottom: 1px solid #ccc;
+}
+
+.PaymentInput {
+  height: 37px;
+  background: #fff;
+  color: #5b5b65;
+}
+
+.PaymentFormWrapper {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px 0 hsla(240, 1%, 49%, 0.3),
+    0 1px 0 0 hsla(0, 0%, 100%, 0.7);
+}
+
+.PaymentInput.CardNumber {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  width: 100%;
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+}
+
+.PaymentInput.ExpiryDate {
+  border-left-color: hsla(240, 1%, 49%, 0.25);
+  border-bottom-color: hsla(240, 1%, 49%, 0.25);
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 4px;
+  width: 50%;
+  display: inline-block;
+}
+
+.PaymentInput.CVC {
+  border-bottom-right-radius: 4px;
+  width: 50%;
+  display: inline-block;
+  border: 1px solid hsla(240, 1%, 49%, 0.25);
+  border-top: none;
+  border-bottom-color: hsla(240, 1%, 49%, 0.25);
+  border-right-color: hsla(240, 1%, 49%, 0.25);
+}
+
+.InputTextWrapper {
+  height: 100%;
+  padding: 10px;
+}
+
+.Chatbubble {
+  background-color: #fff;
+  text-align: left;
+  border-radius: 3px;
+  padding: 16px 24px;
+  box-shadow: 0 1px 28px 0 rgba(90, 60, 122, 0.22);
+  width: 250px;
+  margin: auto;
+}
+
+.ChatChoicesWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  margin: auto;
+}
+
+.ChatChoice {
+  text-align: center;
+  font-size: 16px;
+  padding: 20px 25px;
+  border: 1px solid;
+  border-radius: 3px;
+  border-color: rgb(205, 205, 205);
+  margin: 5px;
+  color: #000;
+}

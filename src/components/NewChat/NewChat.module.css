@@ -327,7 +327,9 @@ h6.Heading {
   padding: 20px 25px;
   border: 1px solid;
   border-radius: 3px;
-  border-color: rgb(205, 205, 205);
+  background-color: rgb(99, 140, 201);
+  border-color: rgb(49, 90, 151);
+  color: #fff;
   margin: 5px;
   color: #000;
 }

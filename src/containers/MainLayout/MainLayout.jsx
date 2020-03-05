@@ -299,32 +299,7 @@ const MainLayout = () => {
         ))}
       </Grid>
 
-      <Ref innerRef={stickyRef}>
-        <Grid container centered columns={2}>
-          <Grid.Column computer={6}>
-            <Sticky context={stickyRef} offset={300}>
-              <div className={classes.Wrapper}>
-                <Typography
-                  variant="h3"
-                  className={`${classes.Heading} ${classes.TextLeft}`}
-                  gutterBottom={true}
-                >
-                  Hjælp robotten med at udforme klagen
-                </Typography>
-                <Typography
-                  variant="h6"
-                  className={`${classes.Subheading} ${classes.TextLeft}`}
-                >
-                  Ved at svare på en række smpørgsmål, vil chatbotten udforme en
-                  skræddersyet klage til netop dit problem
-                </Typography>
-                <CTAButton buttonText="Tal med robotten" />
-              </div>
-            </Sticky>
-          </Grid.Column>
-          <Grid.Column computer={10}>{/* <Chat /> */}</Grid.Column>
-        </Grid>
-      </Ref>
+      
       <Container fluid style={{ height: '2000px' }}>
         <NewChat />
       </Container>

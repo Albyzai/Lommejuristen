@@ -292,18 +292,17 @@ const MainLayout = () => {
             <NewCard
               icon={cardIcon}
               title="Købeloven"
-              text="På nuværende tidspunkt har vi kun købeloven"
+              text="Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? Robotten kan hjælpe dig med alle de problemer du møder i hverdagen."
               alignment="horizontal"
             ></NewCard>
           </Grid.Column>
         ))}
       </Grid>
 
-      
-      <Container fluid style={{ height: '2000px' }}>
+      <Container fluid style={{ height: '1600px', paddingTop: '100px' }}>
         <NewChat />
       </Container>
-      <Container fluid>
+      {/* <Container fluid>
         <Grid centered>
           <Grid.Column
             className={`${classes.columnCentered}`}
@@ -354,51 +353,14 @@ const MainLayout = () => {
             </ScrollAnimation>
           </Grid.Column>
         </Grid>
-      </Container>
-      <Container>
-        <Header>Hvilke lovområder?</Header>
-        <Grid centered>
-          {lawAreas.map((card) => (
-            <Grid.Column computer={5} tablet={5} mobile={16}>
-              <Card
-                raised={true}
-                color={card.color}
-                iconName={card.icon}
-                header={card.header}
-                description={card.description}
-              />
-            </Grid.Column>
-          ))}
-        </Grid>
-      </Container>
+      </Container> */}
       <Container className={classes.Container}>
+        <h1 className={`${classes.DarkText} ${classes.Heading}`}>FAQ</h1>
         <Grid centered>
-          <Grid.Column
-            className={classes.columnCentered}
-            computer={8}
-            tablet={8}
-            mobile={16}
-          >
-            <Typography
-              variant="h3"
-              className={`${classes.Heading} ${classes.Inverted}`}
-              gutterBottom={true}
-            >
-              Ofte stillede spørgsmål
-            </Typography>
-            <Typography
-              variant="h6"
-              className={`${classes.Subheading} ${classes.Inverted}`}
-            >
-              Få svar på mange af de ofte stillede spørgsmål
-            </Typography>
+          <Grid.Column computer={8} tablet={8} mobile={16}>
+            <Accordion options={FAQOptions} />
           </Grid.Column>
-          <Grid.Column
-            className={classes.columnCentered}
-            computer={8}
-            tablet={8}
-            mobile={16}
-          >
+          <Grid.Column computer={8} tablet={8} mobile={16}>
             <Accordion options={FAQOptions} />
           </Grid.Column>
         </Grid>

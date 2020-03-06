@@ -28,7 +28,6 @@ p {
 }
 
 .Dot {
-  position: ;
   display: block;
   margin: auto;
   width: 30px;
@@ -38,6 +37,7 @@ p {
 }
 
 .ContentContainer {
+  width: 80%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -329,7 +329,7 @@ h6.Heading {
   border-radius: 3px;
   background-color: rgb(99, 140, 201);
   border-color: rgb(49, 90, 151);
-  color: #fff;
+  color: #fff !important;
   margin: 5px;
   color: #000;
 }

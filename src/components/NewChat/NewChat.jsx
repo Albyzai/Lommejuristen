@@ -6,8 +6,6 @@ import styled from 'styled-components';
 // import ChatBubble from '../Chat/ChatBubble/ChatBubble';
 import CTAButton from '../../components/CTAButton/CTAButton';
 
-import BackgroundShape from '../../assets/images/animation-shape.svg';
-
 const AbsoluteContent = styled(animated.div)`
   position: absolute;
   left: ${(props) => (props.alignLeft ? '0%' : '50%')};
@@ -20,11 +18,16 @@ const AbsoluteContent = styled(animated.div)`
 `;
 
 const Column = styled(Grid.Column)`
-  height: 400px;
-  // background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
+  height: 550px;
+
   @media only screen and (max-width: 992px) {
     height: 300px;
   }
+`;
+
+const ColumnRight = styled(Column)`
+  background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
+  padding: 0 !important;
 `;
 
 const Heading = styled.div`
@@ -142,6 +145,24 @@ const PaymentInputTextWrapper = styled.div`
   padding: 10px;
 `;
 
+const StickyContainer = styled(animated.div)`
+  position: sticky;
+  top: 50%;
+  transform: translateY(calc(-50% + 75px));
+  width: 100vw;
+  height: 400px;
+`;
+
+const ScrollContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 1600px;
+`;
+
+const StyledCTAButton = styled(CTAButton)`
+  padding: 50px;
+`;
+
 // You can use this `calc` method to increase the impact
 // of the effect by playing around with the values and units.
 const calc = (o) => `translateY(${o * 0.1}px)`;
@@ -152,6 +173,7 @@ const AnimationBackgroundShape = (
     data-name="Lag 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 903.63 747"
+    fill="#f5f6f8"
   >
     <path
       d="M183.36,834.5V88.5H1086v746ZM756.08,176.88c-29.63,0-50.5,5.19-50.7,5.24a1315.37,1315.37,0,0,0-177.46,33.63C473.48,230.21,426.74,247.17,389,266.15c-47.22,23.75-80.41,50.77-98.65,80.3-19.39,31.39-22.14,66.1-8.18,103.16.17.75,19.21,81.79,66.85,161.79,44,73.88,122.08,162,244.17,162,1.77,0,3.59,0,5.38-.06q17-.35,33.41-.62c126.79-2.19,226.94-3.92,285.88-66.2,45.34-47.91,64.19-129.6,59.34-257.06C968.2,212.29,834.8,176.88,756.08,176.88Z"
@@ -260,7 +282,7 @@ const Comp = () => {
         benytter dine svar til at afgøre hvad den skal spørge om næste gang. På
         denne måde får robotten indsnævret din problemstilling
       </AnimationDescription>
-      <CTAButton buttonText="Tal med robotten" />
+      <StyledCTAButton buttonText="Tal med robotten" />
     </AbsoluteContent>
   );
 
@@ -273,7 +295,7 @@ const Comp = () => {
         spørgsmål kan robotten afgøre hvad den ellers mangler af information. På
         denne måde indsnævrer robotten sig til netop din problemstilling.
       </AnimationDescription>
-      <CTAButton buttonText="Tal med robotten" />
+      <StyledCTAButton buttonText="Tal med robotten" />
     </AbsoluteContent>
   );
 
@@ -286,7 +308,7 @@ const Comp = () => {
         udarbejdet af professionelle jurister, og er fuldstændig tilpasset din
         situation.
       </AnimationDescription>
-      <CTAButton buttonText="Tal med robotten" />
+      <StyledCTAButton buttonText="Tal med robotten" />
     </AbsoluteContent>
   );
 
@@ -311,7 +333,7 @@ const Comp = () => {
     <AbsoluteContent opacity={opacity3.value}>
       <PaymentWindow>
         <PaymentWindowHeader>
-          <h1>www.lommejuristen.dk</h1>
+          <h3>www.lommejuristen.dk</h3>
           <span>test@mail.com</span>
         </PaymentWindowHeader>
         <PaymentFormWrapper>
@@ -368,43 +390,26 @@ const Comp = () => {
   });
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100vw',
-        height: '1600px'
-      }}
-      ref={ref}
-    >
+    <ScrollContainer ref={ref}>
       <Grid container columns={1} style={{ position: 'sticky', top: '200px' }}>
         <Heading>Sådan virker det</Heading>
       </Grid>
-      <animated.div
-        style={{
-          position: 'sticky',
-          top: '50%',
-          width: '100vw',
-          height: '400px'
-        }}
-        ref={ref1}
-      >
+      <StickyContainer ref={ref1}>
         <Grid container centered columns={2}>
           <Column computer={6} mobile={16}>
             {row1col1}
             {row2col1}
             {row3col1}
           </Column>
-          <Column computer={10} mobile={16}>
+          <ColumnRight computer={10} mobile={16}>
             {row1col2}
             {row2col2}
             {row3col2}
-          </Column>
+            {AnimationBackgroundShape}
+          </ColumnRight>
         </Grid>
-        {/* {activeRows[0] ? row1 : null}
-        {activeRows[1] ? row2 : null}
-        {activeRows[2] ? row3 : null} */}
-      </animated.div>
-    </div>
+      </StickyContainer>
+    </ScrollContainer>
   );
 };
 

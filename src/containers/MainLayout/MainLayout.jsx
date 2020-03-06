@@ -299,61 +299,9 @@ const MainLayout = () => {
         ))}
       </Grid>
 
-      <Container fluid style={{ height: '1600px', paddingTop: '100px' }}>
+      <Container fluid style={{ height: '1600px', marginBottom: '150px' }}>
         <NewChat />
       </Container>
-      {/* <Container fluid>
-        <Grid centered>
-          <Grid.Column
-            className={`${classes.columnCentered}`}
-            computer={10}
-            tablet={10}
-            mobile={16}
-          >
-            <div className={classes.ContentContainer}>
-              <Paper elevation={3} className={classes.pdfPaper}>
-                <SubjectIcon style={{ height: '100%', width: '90%' }} />
-                <img
-                  src={PdfIcon}
-                  className={classes.pdfIcon}
-                  alt=""
-                  height="75px"
-                />
-              </Paper>
-            </div>
-          </Grid.Column>
-          <Grid.Column
-            className={`${classes.columnCentered}`}
-            computer={6}
-            tablet={6}
-            mobile={16}
-          >
-            <ScrollAnimation
-              animateIn="slideInRight"
-              className={` ${classes.SlideIn} ${classes.Right}`}
-            >
-              <div className={classes.Wrapper}>
-                <Typography
-                  variant="h3"
-                  className={`${classes.Heading} ${classes.Inverted}`}
-                  gutterBottom={true}
-                >
-                  Få tilsendt klagen øjeblikkeligt
-                </Typography>
-                <Typography
-                  variant="h6"
-                  className={`${classes.Subheading} ${classes.Inverted}`}
-                >
-                  Til slut når robotten har den nødvendige information, vil du
-                  få muligheden for øjeblikkeligt at få tilsendt klagen for kun
-                  29 kr.
-                </Typography>
-                <CTAButton buttonText="Tal med robotten" />
-              </div>
-            </ScrollAnimation>
-          </Grid.Column>
-        </Grid>
-      </Container> */}
       <Container className={classes.Container}>
         <h1 className={`${classes.DarkText} ${classes.Heading}`}>FAQ</h1>
         <Grid centered>

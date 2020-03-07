@@ -209,7 +209,7 @@ const Comp = () => {
       opacity2: 0,
       opacity3: 0,
       titleOpacity: 1,
-      config: { duration: 500 }
+      config: { duration: 1000 }
     })
   );
 
@@ -217,6 +217,15 @@ const Comp = () => {
 
   const handleScroll = () => {
     const posY = ref1.current.offsetTop;
+
+    // const opacity1 = () => {
+    //   let opacity = posY / 400;
+
+    //   if (posY > 400) {
+    //     opacity = opacity * 0.5;
+    //   }
+    //   return opacity;
+    // };
 
     let newActiveRows = [...activeRows];
     if (newActiveRows) {
@@ -258,13 +267,9 @@ const Comp = () => {
       }
     }
 
-    console.log('Y:', posY);
     setActiveRows(newActiveRows);
   };
 
-  const choices = [{ text: 'Under 2 år siden' }, { text: 'Over 2 år siden' }];
-
-  console.log('new opacity:', opacity1.value);
   const row1col1 = (
     <AbsoluteContent alignLeft={true} opacity={opacity1.value}>
       <AnimationHeading>Robotten stiller dig spørgsmål</AnimationHeading>
@@ -383,13 +388,6 @@ const Comp = () => {
   return (
     <ScrollContainer ref={ref}>
       <StickyContainer ref={ref1}>
-        {/* <Grid
-          container
-          columns={1}
-          style={{ position: 'sticky', top: '200px' }}
-        >
-          <Heading opacity={titleOpacity}>Sådan virker det</Heading>
-        </Grid> */}
         <StickyGrid container centered>
           <HeadingWrapper computer={16}>
             <Heading opacity={titleOpacity}>Sådan virker det</Heading>

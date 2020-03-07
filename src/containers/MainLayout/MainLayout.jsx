@@ -26,6 +26,7 @@ import CTAButton from '../../components/CTAButton/CTAButton';
 import NewCard from '../../components/NewCard/NewCard';
 import { useSpring, animated, useTrail } from 'react-spring';
 import NewChat from '../../components/NewChat/NewChat';
+import ChatGuide from '../../components/ChatGuide/ChatGuide';
 
 //  assets
 import mobileImage from '../../assets/images/newmobile.png';
@@ -279,7 +280,7 @@ const MainLayout = () => {
           <img src={MaerskLogo} alt="MAERSK" />
         </div>
       </Container>
-      <Grid container>
+      <Grid container className={classes.Container}>
         <Grid.Row>
           <Grid.Column computer={16}>
             <h1 className={`${classes.Heading} ${classes.TextLeft}`}>
@@ -299,9 +300,10 @@ const MainLayout = () => {
         ))}
       </Grid>
 
-      <Container fluid style={{ height: '1600px', marginBottom: '150px' }}>
+      <ChatGuide />
+      {/* <Container fluid style={{ height: '1600px', marginBottom: '150px' }}>
         <NewChat />
-      </Container>
+      </Container> */}
       <Container className={classes.Container}>
         <h1 className={`${classes.DarkText} ${classes.Heading}`}>FAQ</h1>
         <Grid centered>

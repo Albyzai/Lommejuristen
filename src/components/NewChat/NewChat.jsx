@@ -18,6 +18,7 @@ const AbsoluteContent = styled(animated.div)`
 `;
 
 const Column = styled(Grid.Column)`
+  top: 200px;
   height: 550px;
 
   @media only screen and (max-width: 992px) {
@@ -30,6 +31,9 @@ const ColumnRight = styled(Column)`
   padding: 0 !important;
 `;
 
+const HeadingWrapper = styled(Grid.Column)`
+  top: 150px;
+`;
 const Heading = styled.div`
   font-family: 'Roboto';
   color: #404f54;
@@ -39,6 +43,7 @@ const Heading = styled.div`
   margin-bottom: 40px;
   text-align: left;
   padding-left: 0 !important;
+  opacity: ${(props) => props.opacity};
 `;
 const AnimationHeading = styled.div`
   font-family: 'Roboto';
@@ -147,10 +152,14 @@ const PaymentInputTextWrapper = styled.div`
 
 const StickyContainer = styled(animated.div)`
   position: sticky;
-  top: 50%;
-  transform: translateY(calc(-50% + 75px));
+  top: 0%;
+  // transform: translateY(calc(-50% + 75px));
   width: 100vw;
-  height: 400px;
+  height: 100vh;
+`;
+
+const StickyGrid = styled(Grid)`
+  position: sticky;
 `;
 
 const ScrollContainer = styled.div`
@@ -193,13 +202,16 @@ const Comp = () => {
 
   //   console.log('ref1', ref1);
 
-  const [{ offset, opacity1, opacity2, opacity3 }, set] = useSpring(() => ({
-    offset: 0,
-    opacity1: 0,
-    opacity2: 0,
-    opacity3: 0,
-    config: { duration: 500 }
-  }));
+  const [{ titleOpacity, opacity1, opacity2, opacity3 }, set] = useSpring(
+    () => ({
+      offset: 0,
+      opacity1: 0,
+      opacity2: 0,
+      opacity3: 0,
+      titleOpacity: 1,
+      config: { duration: 500 }
+    })
+  );
 
   const [activeRows, setActiveRows] = useState([false, false, false]);
 
@@ -207,67 +219,46 @@ const Comp = () => {
     const posY = ref1.current.offsetTop;
 
     let newActiveRows = [...activeRows];
-    let opacity1, opacity2, opacity3;
     if (newActiveRows) {
       if (posY < 400 && posY > 200) {
         // newActiveRows = [true, false, false];
         const opacity1 = 1;
         const opacity2 = 0;
         const opacity3 = 0;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
         set({ opacity1, opacity2, opacity3 });
       } else if (posY > 400 && posY < 800) {
         // newActiveRows = [false, true, false];
         const opacity1 = 0;
         const opacity2 = 1;
         const opacity3 = 0;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
         set({ opacity1, opacity2, opacity3 });
       } else if (posY > 800 && posY < 1200) {
         // newActiveRows = [false, false, true];
         const opacity1 = 0;
         const opacity2 = 0;
         const opacity3 = 1;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
         set({ opacity1, opacity2, opacity3 });
       } else if (posY < 0) {
         const opacity1 = 1;
         const opacity2 = 0;
         const opacity3 = 0;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
         set({ opacity1, opacity2, opacity3 });
-      } else if (posY > 1200) {
+      } else if (posY > 1050) {
         const opacity1 = 0;
         const opacity2 = 0;
         const opacity3 = 1;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
-        set({ opacity1, opacity2, opacity3 });
+        const titleOpacity = 0;
+        set({ opacity1, opacity2, opacity3, titleOpacity });
+        console.log('titleOpacity', titleOpacity);
       } else {
         const opacity1 = 0;
         const opacity2 = 0;
         const opacity3 = 0;
-        console.log('opacity1', opacity1);
-        console.log('opacity1', opacity2);
-        console.log('opacity1', opacity3);
         set({ opacity1, opacity2, opacity3 });
       }
     }
 
-    console.log('opacity1', opacity1);
-    console.log('opacity2', opacity2);
-    console.log('opacity3', opacity3);
-
-    console.log(newActiveRows);
+    console.log('Y:', posY);
     setActiveRows(newActiveRows);
   };
 
@@ -391,11 +382,18 @@ const Comp = () => {
 
   return (
     <ScrollContainer ref={ref}>
-      <Grid container columns={1} style={{ position: 'sticky', top: '200px' }}>
-        <Heading>Sådan virker det</Heading>
-      </Grid>
       <StickyContainer ref={ref1}>
-        <Grid container centered columns={2}>
+        {/* <Grid
+          container
+          columns={1}
+          style={{ position: 'sticky', top: '200px' }}
+        >
+          <Heading opacity={titleOpacity}>Sådan virker det</Heading>
+        </Grid> */}
+        <StickyGrid container centered>
+          <HeadingWrapper computer={16}>
+            <Heading opacity={titleOpacity}>Sådan virker det</Heading>
+          </HeadingWrapper>
           <Column computer={6} mobile={16}>
             {row1col1}
             {row2col1}
@@ -407,7 +405,7 @@ const Comp = () => {
             {row3col2}
             {AnimationBackgroundShape}
           </ColumnRight>
-        </Grid>
+        </StickyGrid>
       </StickyContainer>
     </ScrollContainer>
   );

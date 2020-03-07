@@ -279,7 +279,7 @@ const MainLayout = () => {
           <img src={MaerskLogo} alt="MAERSK" />
         </div>
       </Container>
-      <Grid className={classes.Container} container>
+      <Grid container>
         <Grid.Row>
           <Grid.Column computer={16}>
             <h1 className={`${classes.Heading} ${classes.TextLeft}`}>

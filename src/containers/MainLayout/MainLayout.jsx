@@ -128,10 +128,21 @@ const IntroContainer = styled(Container)`
   // background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
   background: url(${IntroBG}) no-repeat;
   background-size: cover;
+
+  margin: 0 !important;
+
+  @media only screen and (max-width: 767px) {
+    &.ui.container {
+      margin: 0 !important;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
 `;
 
 const StyledContainer = styled(Container)`
   padding-bottom: 150px;
+  margin: 0 !important;
 `;
 
 const Heading = styled.h2`

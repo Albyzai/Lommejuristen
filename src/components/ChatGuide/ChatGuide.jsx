@@ -206,7 +206,7 @@ const NewBackgroundShape = (
 
 const ChatGuide = () => {
   return (
-    <WrapperGrid container>
+    <Grid padded="vertically">
       <Row>
         <Column computer={8} mobile={16}>
           <ContentWrapper>
@@ -327,7 +327,7 @@ const ChatGuide = () => {
           </ContentWrapper>
         </BackgroundColumn>
       </Row>
-    </WrapperGrid>
+    </Grid>
   );
 };
 

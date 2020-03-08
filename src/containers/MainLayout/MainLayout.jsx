@@ -27,6 +27,8 @@ import NewCard from '../../components/NewCard/NewCard';
 import { useSpring, animated, useTrail } from 'react-spring';
 import NewChat from '../../components/NewChat/NewChat';
 import ChatGuide from '../../components/ChatGuide/ChatGuide';
+import OwnContainer from '../../components/Grid/Grid';
+import styled from 'styled-components';
 
 //  assets
 import mobileImage from '../../assets/images/newmobile.png';
@@ -39,37 +41,38 @@ import TaenkLogo from '../../assets/images/taenk-logo.svg';
 import DRLogo from '../../assets/images/dr-logo.svg';
 import MaerskLogo from '../../assets/images/maersk-logo.svg';
 import LegoLogo from '../../assets/images/lego-logo.svg';
+import IntroBG from '../../assets/images/introbg.svg';
 
 const navItems = [{ name: 'Artikler' }];
 
 const cards = [
   {
     color: 'blue',
-    icon: 'balance',
+    icon: <i className={`${classes.BulbIcon} fad fa-lightbulb-on`}></i>,
     header: 'Gratis Rådgivning',
-    description:
-      'Har du købt en ting i en butik eller i en netbutik, og er du usikker på om du f.eks. må bytte varen? \n\n Vi vurderer altid gratis hvad du har krav på!'
+    text:
+      'Upload any bill to Roger or use your unique RogerAddress to instantly receive and scan invoices.'
   },
   {
     color: 'blue',
-    icon: 'write',
+    icon: <i className={`${classes.ScaleIcon} fad fa-balance-scale`}></i>,
     header: 'Vi skriver klagen!',
-    description:
-      'For 29,- kroner skriver robotten klagen lige præcis til din situation \n\n Du kan herefter sende klagen videre til butikken.'
+    text:
+      "The market's best approval flow. Create rules for who approves what and when."
   },
   {
     color: 'blue',
-    icon: 'wait',
-    header: '5 Minutter',
-    description:
-      'Det tager kun 5 minutter at trykke sig igennem vores interaktive skema \n\n Slip for at søge flere timer på nettet.'
+    icon: <i className={`${classes.MoneyIcon} fad fa-money-bill-alt`}></i>,
+    header: 'Betal',
+    text:
+      'Pay any bill or invoice to anyone without changing your current setup.'
   },
   {
     color: 'blue',
-    icon: 'wait',
+    icon: <i className={`${classes.ComplaintIcon} fad fa-file-contract`}></i>,
     header: '5 Minutter',
-    description:
-      'Det tager kun 5 minutter at trykke sig igennem vores interaktive skema \n\n Slip for at søge flere timer på nettet.'
+    text:
+      'With our powerful accounting system integrations you can automate the entire accounts payable flow.'
   }
 ];
 
@@ -95,82 +98,204 @@ const FAQOptions = [
   }
 ];
 
+const FooterItems = {
+  contactInfo: [
+    '+45 28 40 45 00',
+    'Åbningstider: Mandag-Fredag: 8-16 \n Lørdag-Søndag: lukket'
+  ],
+  socialMedia: ['Facebook', 'Medium', 'Twitter'],
+  company: ['Om os', 'Blog', 'Presse'],
+  product: ['FAQ'],
+  law: ['Privatpolitik', 'Handelsbetingelser', 'Cookies Politik']
+};
+
+// const IntroContainer = styled(OwnContainer)`
+//   background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
+//   background: black;
+//   width: 50% !important;
+// `;
+
+const TestDiv = styled(OwnContainer)`
+   {
+    width: 100px !important;
+    height: 100px !important;
+    position: relative !important;
+    background: green !important;
+  }
+`;
+
+const IntroContainer = styled(Container)`
+  // background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
+  background: url(${IntroBG}) no-repeat;
+  background-size: cover;
+`;
+
+const StyledContainer = styled(Container)`
+  padding-bottom: 150px;
+`;
+
+const Heading = styled.h2`
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 2.5em;
+  width: 100%;
+  padding-bottom: 20px;
+  text-align: left;
+`;
+
+const HeadingWhite = styled(Heading)`
+  color: #fff;
+`;
+
+const HeadingDark = styled(Heading)`
+  color: #404f54;
+`;
+
+const HeadingDarkCentered = styled(HeadingDark)`
+  text-align: center;
+`;
+
+const SubHeading = styled.div`
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #818a8f;
+  margin-bottom: 50px;
+`;
+
+const FooterList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+
+  li {
+    padding: 7.5px 0;
+    color: #818a8f;
+  }
+
+  li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+const FooterHeading = styled.h3`
+  text-align: left;
+  font-weight: 700;
+  color: #34383b;
+`;
+
+const IntroText = (
+  <>
+    <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
+      Fordi adgangen til juridisk hjælp skal være for alle
+    </p>
+    <p
+      className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
+    >
+      Danmarks Første Juridiske Robot
+    </p>
+    className=
+    {`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
+    <p>
+      Velkommen til Danmarks første juridiske robot. Robotten vurderer gratis
+      dit problem, og du er derfor sikker på hvad dine rettigheder er. Den kan
+      også for 29,- kroner skrive din klage, som du herefter kan sende til
+      butikken.
+    </p>
+  </>
+);
+
+const IntroPhone = (
+  <Zoom in={true} timeout={1500}>
+    <img src={mobileImage} className={classes.image} />
+  </Zoom>
+);
+
+const CompanySection = (
+  <>
+    <HeadingDarkCentered>Anerkendt af</HeadingDarkCentered>
+    <SubHeading>
+      Lommejuristen er et anerkendt brand indenfor legaltech, virksomhederne
+      elsker os.
+    </SubHeading>
+    <Grid className={classes.LogosWrapper}>
+      <Grid.Column computer={4} mobile={8}>
+        <img src={DRLogo} alt="DR" />
+      </Grid.Column>
+      <Grid.Column computer={4} mobile={8}>
+        <img src={LegoLogo} alt="LEGO" />
+      </Grid.Column>
+      <Grid.Column computer={4} mobile={8}>
+        <img src={TV2Logo} alt="TV2" />
+      </Grid.Column>
+      <Grid.Column computer={4} mobile={8}>
+        <img src={TaenkLogo} alt="Taenk" />
+      </Grid.Column>
+      <Grid.Column computer={4} mobile={8}>
+        <img src={MaerskLogo} alt="MAERSK" />
+      </Grid.Column>
+    </Grid>
+  </>
+);
+
+const FooterContactInfo = (
+  <>
+    <FooterHeading>Lommejuristen</FooterHeading>
+    <FooterList>
+      {FooterItems.contactInfo.map((item) => (
+        <li>{item}</li>
+      ))}
+    </FooterList>
+  </>
+);
+
+const FooterSocialmedia = (
+  <>
+    <FooterHeading>Følg Os</FooterHeading>
+    <FooterList>
+      {FooterItems.socialMedia.map((item) => (
+        <li>{item}</li>
+      ))}
+    </FooterList>
+  </>
+);
+
+const FooterCompany = (
+  <>
+    <FooterHeading>Virksomhed</FooterHeading>
+    <FooterList>
+      {FooterItems.company.map((item) => (
+        <li>{item}</li>
+      ))}
+    </FooterList>
+  </>
+);
+
+const FooterProduct = (
+  <>
+    <FooterHeading>Produkt</FooterHeading>
+    <FooterList>
+      {FooterItems.product.map((item) => (
+        <li>{item}</li>
+      ))}
+    </FooterList>
+  </>
+);
+
+const FooterLaw = (
+  <>
+    <FooterHeading>Juridisk</FooterHeading>
+    <FooterList>
+      {FooterItems.law.map((item) => (
+        <li>{item}</li>
+      ))}
+    </FooterList>
+  </>
+);
+
 const MainLayout = () => {
-  const svg = (
-    <div className={classes.headerShape}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1000 100"
-        preserveAspectRatio="none"
-      >
-        <path
-          className={classes.shapeFill}
-          d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
-                        c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
-                        c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"
-        />
-      </svg>
-    </div>
-  );
-
-  // const triangle = (
-  //   <div className={classes.TriangleShape}>
-  //     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.38 133.22">
-  //         <polygon className={classes.shapeFill} class="cls-1" points="0.46 0.76 0.46 132.76 257.46 132.76 0.46 0.76"/>
-  //     </svg>
-  //   </div>
-  // )
-
   const cardIcon = <img src={PdfIcon} alt="" height="100%" />;
-
-  const triangle = (
-    <div className={classes.TriangleShape}>
-      <svg
-        className={classes.shapeFill}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="5 0 249 130"
-      >
-        <polygon
-          class="cls-1"
-          points="0.46 0.76 0.46 132.76 257.46 132.76 0.46 0.76"
-        />
-      </svg>
-    </div>
-  );
-
-  const halfRoundSVG = (
-    <div className={classes.roundShape}>
-      <svg
-        id="Lag_1"
-        data-name="Lag 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 400 452"
-      >
-        <defs>
-          <linearGradient id="myGradient">
-            <stop offset="0%" stop-color="#0700dd" />
-            <stop offset="89%" stop-color="#00f2ff" />
-          </linearGradient>
-        </defs>
-        <path
-          fill="url(#myGradient)"
-          d="M99.5,608.5v-451h399V321c-.12,74.79-28.29,145.61-79.31,199.43S300.05,605.3,227,608.26c-3.79.16-7.66.24-11.48.24Z"
-          transform="translate(-99 -157)"
-        />
-      </svg>
-    </div>
-  );
-
-  // const springRef = useRef();
-  // const props = useSpring({ ...values, ref: springRef });
-
-  // const transitionRef = useRef();
-  // const transitions = useTransition({ ...values, ref: transitionRef });
-
-  // const trail = useTrail(cards.length, {
-  //   from: { opacity: 0, marginTop: 100},
-  //   to: { opacity: 1, marginTop: 0 }
-  // })
 
   const trail = useTrail(cards.length, {
     from: { opacity: 0, marginTop: 100 },
@@ -178,134 +303,69 @@ const MainLayout = () => {
     config: { duration: 1000 }
   });
 
-  const stickyRef = createRef();
+  const Cards = trail.map((props, index) => (
+    <Grid.Column computer={4} tablet={4} mobile={16} key={index}>
+      <animated.div style={props}>
+        <NewCard
+          withArrow={trail.length !== index + 1 ? true : false}
+          icon={cards[index].icon}
+          title={cards[index].header}
+          text={cards[index].text}
+        ></NewCard>
+      </animated.div>
+    </Grid.Column>
+  ));
 
-  const Placeholder = () => (
-    <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-  );
+  const LawCards = cards.map((card) => (
+    <Grid.Column computer={8} mobile={16}>
+      <NewCard
+        icon={cardIcon}
+        title="Købeloven"
+        text="Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? Robotten kan hjælpe dig med alle de problemer du møder i hverdagen."
+        alignment="horizontal"
+      ></NewCard>
+    </Grid.Column>
+  ));
 
   return (
     <>
       <HeaderNavigation navItems={navItems} />
-      <Container
-        fluid
-        style={{ paddingBottom: '150px' }}
-        className={`${classes.introSection}`}
-      >
-        <Grid container centered style={{ paddingTop: '150px' }}>
+      <IntroContainer fluid>
+        <StyledContainer>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column computer={8} mobile={16}>
+                {IntroText}
+              </Grid.Column>
+              <Grid.Column computer={8} mobile={16}>
+                {IntroPhone}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column computer={16}>
+                <HeadingWhite>En problemfri sagsbehandling</HeadingWhite>
+              </Grid.Column>
+            </Grid.Row>
+            {Cards}
+          </Grid>
+        </StyledContainer>
+      </IntroContainer>
+      <StyledContainer>{CompanySection}</StyledContainer>
+      <StyledContainer>
+        <Grid>
           <Grid.Row>
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={8}
-              tablet={8}
-              mobile={16}
-            >
-              <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
-                Fordi adgangen til juridisk hjælp skal være for alle
-              </p>
-              <p
-                className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
-              >
-                Danmarks Første Juridiske Robot
-              </p>
-              <p
-                className={`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
-              >
-                Velkommen til Danmarks første juridiske robot. Robotten vurderer
-                gratis dit problem, og du er derfor sikker på hvad dine
-                rettigheder er. Den kan også for 29,- kroner skrive din klage,
-                som du herefter kan sende til butikken.
-              </p>
-            </Grid.Column>
-
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={8}
-              tablet={8}
-              mobile={16}
-            >
-              <Zoom in={true} timeout={1500}>
-                <img src={mobileImage} className={classes.image} />
-              </Zoom>
+            <Grid.Column computer={16}>
+              <HeadingDark>Lovgivnings områder</HeadingDark>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column
-              className={classes.columnCentered}
-              computer={16}
-              tablet={16}
-              mobile={16}
-            >
-              <h1 className={`${classes.Heading} ${classes.Inverted}`}>
-                En problemfri sagsbehandling
-              </h1>
-              <Grid centered className={classes.IntroCardsContainer}>
-                {trail.map((props, index) => (
-                  <Grid.Column computer={4} tablet={4} mobile={14} key={index}>
-                    <animated.div style={props}>
-                      <NewCard
-                        withArrow={trail.length !== index + 1 ? true : false}
-                      >
-                        <h4 className={classes.Heading}>
-                          {cards[index].header}
-                        </h4>
-                        <div
-                          className={`${classes.Subheading} ${classes.Medium}`}
-                        >
-                          {cards[index].description}
-                        </div>
-                      </NewCard>
-                    </animated.div>
-                  </Grid.Column>
-                ))}
-              </Grid>
-            </Grid.Column>
-          </Grid.Row>
+          {LawCards}
         </Grid>
-        {triangle}
-      </Container>
-      <Container className={classes.Container}>
-        <h1 className={`${classes.DarkText} ${classes.Heading}`}>
-          Anerkendt af
-        </h1>
-        <div className={`${classes.Subheading}`}>
-          Lommejuristen er et anerkendt brand indenfor legaltech, virksomhederne
-          elsker os.
-        </div>
-        <div className={classes.LogosWrapper}>
-          <img src={DRLogo} alt="DR" />
-          <img src={LegoLogo} alt="LEGO" />
-          <img src={TV2Logo} alt="TV2" />
-          <img src={TaenkLogo} alt="Taenk" />
-          <img src={MaerskLogo} alt="MAERSK" />
-        </div>
-      </Container>
-      <Grid container className={classes.Container}>
-        <Grid.Row>
-          <Grid.Column computer={16}>
-            <h1 className={`${classes.Heading} ${classes.TextLeft}`}>
-              Lovgivnings områder
-            </h1>
-          </Grid.Column>
-        </Grid.Row>
-        {cards.map((card) => (
-          <Grid.Column computer={8}>
-            <NewCard
-              icon={cardIcon}
-              title="Købeloven"
-              text="Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? Robotten kan hjælpe dig med alle de problemer du møder i hverdagen."
-              alignment="horizontal"
-            ></NewCard>
-          </Grid.Column>
-        ))}
-      </Grid>
-
-      <ChatGuide />
-      {/* <Container fluid style={{ height: '1600px', marginBottom: '150px' }}>
-        <NewChat />
-      </Container> */}
-      <Container className={classes.Container}>
-        <h1 className={`${classes.DarkText} ${classes.Heading}`}>FAQ</h1>
+      </StyledContainer>
+      <StyledContainer>
+        <ChatGuide />
+      </StyledContainer>
+      <StyledContainer>
+        <HeadingDarkCentered>FAQ</HeadingDarkCentered>
         <Grid centered>
           <Grid.Column computer={8} tablet={8} mobile={16}>
             <Accordion options={FAQOptions} />
@@ -314,125 +374,29 @@ const MainLayout = () => {
             <Accordion options={FAQOptions} />
           </Grid.Column>
         </Grid>
-      </Container>
+      </StyledContainer>
       <footer>
-        <Grid container>
+        <Grid container centered>
           <Grid.Row>
             <Grid.Column computer={16}>
               <Divider />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column computer={4}>
-              <ul className={classes.FooterList}>
-                <li>
-                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
-                    Lommejuristen
-                  </h3>
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.NoLink} ${classes.TextLeft}`}
-                >
-                  +45 28 40 45 00
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.NoLink} ${classes.TextLeft}`}
-                >
-                  Åbningstider: {'\n'}
-                  Mandag-Fredag: 8-16 {'\n'}
-                  Lørdag-Søndag: lukket
-                </li>
-              </ul>
-            </Grid.Column>
-            <Grid.Column computer={3}>
-              <ul className={classes.FooterList}>
-                <li>
-                  <h3 className={`${classes.heading}  ${classes.TextLeft}`}>
-                    Følg os
-                  </h3>
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Facebook
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Medium
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Twitter
-                </li>
-              </ul>
-            </Grid.Column>
-            <Grid.Column computer={3}>
-              <ul className={classes.FooterList}>
-                <li>
-                  <h3
-                    className={`${classes.heading} ${classes.Normal} ${classes.TextLeft}`}
-                  >
-                    Virksomhed
-                  </h3>
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Om os
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Blog
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Presse
-                </li>
-              </ul>
-            </Grid.Column>
-            <Grid.Column computer={3}>
-              <ul className={classes.FooterList}>
-                <li>
-                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
-                    Produkt
-                  </h3>
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  FAQ
-                </li>
-              </ul>
-            </Grid.Column>
-            <Grid.Column computer={3}>
-              <ul className={classes.FooterList}>
-                <li>
-                  <h3 className={`${classes.heading} ${classes.TextLeft}`}>
-                    Juridisk
-                  </h3>
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Privatpolitik
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Handelsbetingelser
-                </li>
-                <li
-                  className={`${classes.Subheading} ${classes.Normal} ${classes.TextLeft}`}
-                >
-                  Cookies Politik
-                </li>
-              </ul>
-            </Grid.Column>
-          </Grid.Row>
+          <Grid.Column computer={4} mobile={6}>
+            {FooterContactInfo}
+          </Grid.Column>
+          <Grid.Column computer={3} mobile={5}>
+            {FooterSocialmedia}
+          </Grid.Column>
+          <Grid.Column computer={3} mobile={5}>
+            {FooterCompany}
+          </Grid.Column>
+          <Grid.Column computer={3} mobile={5}>
+            {FooterProduct}
+          </Grid.Column>
+          <Grid.Column computer={3} mobile={5}>
+            {FooterLaw}
+          </Grid.Column>
         </Grid>
       </footer>
     </>

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 const Card = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
   background-color: #fff;
   color: #000;
   padding: 3em;
   border-radius: 10px;
-  min-height: 400px;
-  max-height: 500px;
+  height: 400px;
   -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
   -moz-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
@@ -20,6 +20,7 @@ const Card = styled.div`
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05), 0 1px 12px rgba(0, 0, 0, 0.1);
 
   &.horizontal {
+    flex-direction: row;
     padding: 2em;
     min-height: 175px;
     max-height: 175px;
@@ -68,6 +69,8 @@ const Card = styled.div`
 
   @media only screen and (max-width: 767px) {
     min-height: 200px;
+    max-height: 200px;
+    flex-direction: row;
 
     &.withArrow::after {
       content: '\f107';
@@ -83,7 +86,30 @@ const IconWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: ${(props) => (props.alignment === 'horizontal' ? '30%' : '100%')};
+  // padding: 1.5em;
+  // padding: 10px;
+  // padding-bottom: ${(props) =>
+    props.alignment === 'horizontal' ? '10px' : '1.5em'};
+
+    ${(props) =>
+      props.alignment === 'horizontal'
+        ? 'padding-right: 1.5em'
+        : 'padding-bottom: 1.5em'};
+
+  @media only screen and (max-width: 767px) {
+    width: 30%;
+    padding-bottom: 0;
+    padding-right: 1.5em;
+    // padding-bottom: 0;
+
+    &.withArrow::after {
+      content: '\f107';
+      right: 50%;
+      bottom: -38px;
+      margin-right: -25px;
+    }
+  }
 `;
 
 const CardContent = styled.div`
@@ -93,7 +119,7 @@ const CardContent = styled.div`
 const CardHeading = styled.h4`
   font-family: 'Roboto';
   color: #404f54;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 1.5em;
   text-align: left;
 `;
@@ -114,7 +140,7 @@ const NewCard = ({ icon, title, text, withArrow, alignment, children }) => {
         alignment === 'horizontal' ? 'horizontal' : ''
       }`}
     >
-      {icon ? <IconWrapper>{icon}</IconWrapper> : null}
+      {icon ? <IconWrapper alignment={alignment}>{icon}</IconWrapper> : null}
       <CardContent>
         {title ? <CardHeading>{title}</CardHeading> : null}
         {text ? <CardText>{text}</CardText> : null}

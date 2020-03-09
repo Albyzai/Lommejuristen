@@ -31,7 +31,7 @@ import OwnContainer from '../../components/Grid/Grid';
 import styled from 'styled-components';
 
 //  assets
-import mobileImage from '../../assets/images/newmobile.png';
+import mobileImage from '../../assets/images/newestphone.svg';
 import PdfIcon from '../../assets/icons/pdf-icon.svg';
 import Chat from '../../components/Chat/Chat';
 import Shape from '../../assets/images/header-bottom.svg';
@@ -42,6 +42,7 @@ import DRLogo from '../../assets/images/dr-logo.svg';
 import MaerskLogo from '../../assets/images/maersk-logo.svg';
 import LegoLogo from '../../assets/images/lego-logo.svg';
 import IntroBG from '../../assets/images/introbg.svg';
+import BasketIcon from '../../assets/icons/basket.svg';
 
 const cards = [
   {
@@ -77,7 +78,7 @@ const cards = [
 const lawAreas = [
   {
     color: 'blue',
-    icon: 'shopping basket',
+    icon: <img src={BasketIcon} alt="kurv" />,
     header: 'Købeloven',
     description:
       'Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? \n \n Robotten kan hjælpe dig med alle de problemer du møder i hverdagen.'
@@ -107,12 +108,6 @@ const FooterItems = {
   law: ['Privatpolitik', 'Handelsbetingelser', 'Cookies Politik']
 };
 
-// const IntroContainer = styled(OwnContainer)`
-//   background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
-//   background: black;
-//   width: 50% !important;
-// `;
-
 const TestDiv = styled(OwnContainer)`
    {
     width: 100px !important;
@@ -141,6 +136,16 @@ const IntroContainer = styled(Container)`
 const StyledContainer = styled(Container)`
   padding-bottom: 150px;
   margin: 0 !important;
+`;
+
+const IntroductionContainer = styled(Container)`
+  padding-top: 150px;
+  padding-bottom: 150px;
+`;
+
+const WhiteCTAButton = styled(CTAButton)`
+  align-self: flex-start;
+  margin-top: 20px;
 `;
 
 const Heading = styled.h2`
@@ -228,6 +233,14 @@ const IntroSubtext = styled.p`
   text-align: left;
 `;
 
+const CopyrightText = styled.p`
+  font-size: 0.8em;
+  color: #818a8f;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+`;
+
 const IntroText = (
   <ContentWrapperCenter>
     <IntroSloganText>
@@ -240,13 +253,16 @@ const IntroText = (
       også for 29,- kroner skrive din klage, som du herefter kan sende til
       butikken.
     </IntroSubtext>
+    <WhiteCTAButton>Start robotten</WhiteCTAButton>
   </ContentWrapperCenter>
 );
 
 const IntroPhone = (
-  <Zoom in={true} timeout={1500}>
-    <img src={mobileImage} className={classes.image} />
-  </Zoom>
+  <ContentWrapperCenter>
+    <Zoom in={true} timeout={1500}>
+      <img src={mobileImage} className={classes.image} />
+    </Zoom>
+  </ContentWrapperCenter>
 );
 
 const CompanySection = (
@@ -353,10 +369,10 @@ const MainLayout = () => {
     </Grid.Column>
   ));
 
-  const LawCards = cards.map((card) => (
+  const LawCards = lawAreas.map((card) => (
     <Grid.Column computer={8} mobile={16}>
       <NewCard
-        icon={cardIcon}
+        icon={card.icon}
         title="Købeloven"
         text="Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? Robotten kan hjælpe dig med alle de problemer du møder i hverdagen."
         alignment="horizontal"
@@ -367,21 +383,18 @@ const MainLayout = () => {
   return (
     <>
       <IntroContainer fluid>
-        <StyledContainer
-          style={{ paddingTop: '200px', paddingBottom: '100px' }}
-          fluid
-        >
+        <IntroductionContainer>
           <Grid centered>
             <Grid.Row>
-              <Grid.Column computer={7} mobile={16}>
+              <Grid.Column computer={9} tablet={8} mobile={16}>
                 {IntroText}
               </Grid.Column>
-              <Grid.Column computer={7} mobile={16}>
+              <Grid.Column computer={7} tablet={8} mobile={16}>
                 {IntroPhone}
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </StyledContainer>
+        </IntroductionContainer>
         <StyledContainer>
           <Grid>
             <Grid.Row>
@@ -398,7 +411,7 @@ const MainLayout = () => {
         <Grid>
           <Grid.Row>
             <Grid.Column computer={16}>
-              <HeadingDark>Lovgivnings områder</HeadingDark>
+              <HeadingDark>Lovområder</HeadingDark>
             </Grid.Column>
           </Grid.Row>
           {LawCards}
@@ -440,6 +453,13 @@ const MainLayout = () => {
           <Grid.Column computer={3} mobile={5}>
             {FooterLaw}
           </Grid.Column>
+          <Grid.Row>
+            <Grid.Column computer={16}>
+              <CopyrightText>
+                &copy; 2020 JurNordica ApS. Alle rettigheder forbeholdes.
+              </CopyrightText>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </footer>
     </>

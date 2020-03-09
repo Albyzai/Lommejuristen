@@ -25,8 +25,12 @@ const StyledContainer = styled(Container)`
   }
 `;
 
-const OwnContainer = ({ isFluid, children }) => {
-  return <StyledContainer fluid={isFluid}>{children}</StyledContainer>;
+const OwnContainer = ({ isFluid, children, className }) => {
+  return (
+    <StyledContainer className={className} fluid={isFluid}>
+      {children}
+    </StyledContainer>
+  );
 };
 
 export default OwnContainer;

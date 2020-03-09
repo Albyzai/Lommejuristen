@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom';
 const FixedNavigation = styled.div`
   position: fixed;
   width: 100%;
-  height: 75px;
+  height: 85px;
   top: 0;
-  padding: 10px 0;
+  padding: 15px 0;
   background: ${(props) => (props.scrolled ? '#fff' : 'none')};
   color: ${(props) => (props.scrolled ? '#000' : '#fff')};
   box-shadow: ${(props) =>
@@ -39,6 +39,8 @@ const NavWrapper = styled.nav`
 `;
 
 const NavList = styled.ul`
+  position: relative;
+  text-align: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -55,14 +57,37 @@ const NavItem = styled.li`
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  // &:last-child {
-  //   padding-right: 0;
-  // }
+  &:last-child {
+    padding-right: 0;
+  }
+`;
+
+const NavLink = styled(Link)`
+  position: relative;
+
+  &:after {
+    transition: all 0.5s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: ${(props) => (props.scrolled ? '#046cec' : '#fff')};
+    height: 2px;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
 `;
 
 const StyledLogo = styled.img`
   display: block;
   height: 100%;
+  filter: ${(props) => (props.scrolled ? 'none' : 'brightness(0) invert(1)')};
 `;
 
 const StyledContainer = styled(Container)`
@@ -81,7 +106,7 @@ const ChatButton = styled.div`
 
 const HeaderNavigation = ({ navItems }) => {
   const [scrolled, setScrolled] = useState(false);
-  const changePosition = 100;
+  const changePosition = 1;
 
   let position = useWindowScrollPosition();
 
@@ -99,14 +124,16 @@ const HeaderNavigation = ({ navItems }) => {
         <NavigationContentWrapper>
           <LogoWrapper>
             <Link to="/">
-              <StyledLogo src={Logo} />
+              <StyledLogo scrolled={scrolled} src={Logo} />
             </Link>
           </LogoWrapper>
           <NavWrapper>
             <NavList>
               {navItems.map((item) => (
                 <NavItem>
-                  <Link to={item.url}>{item.name}</Link>
+                  <NavLink scrolled={scrolled} to={item.url}>
+                    {item.name}
+                  </NavLink>
                 </NavItem>
               ))}
               <NavItem>

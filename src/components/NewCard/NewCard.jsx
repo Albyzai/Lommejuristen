@@ -86,7 +86,7 @@ const IconWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: ${(props) => (props.alignment === 'horizontal' ? '30%' : '100%')};
+  width: ${(props) => (props.alignment === 'horizontal' ? '50%' : '100%')};
   // padding: 1.5em;
   // padding: 10px;
   // padding-bottom: ${(props) =>

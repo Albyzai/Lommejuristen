@@ -82,6 +82,12 @@ const AnimationDescription = styled.div`
   color: #818a8f;
 `;
 
+const StyledCTAButton = styled(CTABUtton)`
+  float: left;
+  align-self: flex-start;
+  margin-top: 20px;
+`;
+
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -242,7 +248,7 @@ const ChatGuide = () => {
               næste gang. På denne måde får robotten indsnævret din
               problemstilling
             </AnimationDescription>
-            <CTABUtton>Start robotten</CTABUtton>
+            <StyledCTAButton>Start robotten</StyledCTAButton>
           </ContentWrapper>
         </Column>
         <BackgroundColumn computer={8} tablet={8} mobile={16}>
@@ -279,6 +285,7 @@ const ChatGuide = () => {
               information. På denne måde indsnævrer robotten sig til netop din
               problemstilling.
             </AnimationDescription>
+            <StyledCTAButton>Start robotten</StyledCTAButton>
           </ContentWrapper>
         </Column>
       </ReverseRow>
@@ -295,6 +302,7 @@ const ChatGuide = () => {
               vil være udarbejdet af professionelle jurister, og er fuldstændig
               tilpasset din situation.
             </AnimationDescription>
+            <StyledCTAButton>Start robotten</StyledCTAButton>
           </ContentWrapper>
         </Column>
         <BackgroundColumn computer={8} tablet={8} mobile={16}>

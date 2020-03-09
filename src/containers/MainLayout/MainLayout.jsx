@@ -190,31 +190,59 @@ const FooterList = styled.ul`
   }
 `;
 
+const ContentWrapperCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+`;
+
 const FooterHeading = styled.h3`
   text-align: left;
   font-weight: 700;
   color: #34383b;
 `;
 
+const IntroSloganText = styled.h3`
+  width: 100%;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.5em;
+  text-align: left;
+`;
+const IntroHeader = styled.h1`
+  width: 100%;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: white;
+  text-align: left;
+`;
+
+const IntroSubtext = styled.p`
+  width: 100%;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 100;
+  opacity: 0.8;
+  text-align: left;
+`;
+
 const IntroText = (
-  <>
-    <p className={`${classes.TextMargin} ${classes.AboveHeading}`}>
+  <ContentWrapperCenter>
+    <IntroSloganText>
       Fordi adgangen til juridisk hjælp skal være for alle
-    </p>
-    <p
-      className={`${classes.TextMargin} ${classes.Heading} ${classes.Inverted}`}
-    >
-      Danmarks Første Juridiske Robot
-    </p>
-    className=
-    {`${classes.TextMargin} ${classes.Subheading} ${classes.Inverted}`}
-    <p>
+    </IntroSloganText>
+    <IntroHeader>Danmarks Første Juridiske Robot</IntroHeader>
+    <IntroSubtext>
       Velkommen til Danmarks første juridiske robot. Robotten vurderer gratis
       dit problem, og du er derfor sikker på hvad dine rettigheder er. Den kan
       også for 29,- kroner skrive din klage, som du herefter kan sende til
       butikken.
-    </p>
-  </>
+    </IntroSubtext>
+  </ContentWrapperCenter>
 );
 
 const IntroPhone = (
@@ -342,16 +370,23 @@ const MainLayout = () => {
     <>
       <HeaderNavigation navItems={navItems} />
       <IntroContainer fluid>
-        <StyledContainer>
-          <Grid>
+        <StyledContainer
+          style={{ paddingTop: '200px', paddingBottom: '100px' }}
+          fluid
+        >
+          <Grid centered>
             <Grid.Row>
-              <Grid.Column computer={8} mobile={16}>
+              <Grid.Column computer={7} mobile={16}>
                 {IntroText}
               </Grid.Column>
-              <Grid.Column computer={8} mobile={16}>
+              <Grid.Column computer={7} mobile={16}>
                 {IntroPhone}
               </Grid.Column>
             </Grid.Row>
+          </Grid>
+        </StyledContainer>
+        <StyledContainer>
+          <Grid>
             <Grid.Row>
               <Grid.Column computer={16}>
                 <HeadingWhite>En problemfri sagsbehandling</HeadingWhite>

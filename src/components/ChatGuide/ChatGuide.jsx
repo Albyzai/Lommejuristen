@@ -10,6 +10,13 @@ const WrapperGrid = styled(Grid)`
 const Row = styled(Grid.Row)`
   padding: 50px 0 !important;
 `;
+
+const ReverseRow = styled(Grid.Row)`
+  padding: 50px 0 !important;
+  @media only screen and (max-width: 767px) {
+    flex-direction: column-reverse !important;
+  }
+`;
 const Column = styled(Grid.Column)``;
 
 const BackgroundColumn = styled(Column)`
@@ -36,6 +43,20 @@ const BackgroundColumn = styled(Column)`
     transform: ${(props) => (props.inverted ? ' scaleX(-1)' : 'none')};
     width: 100%;
     height: 100%;
+  }
+
+  @media only screen and (max-width: 991px) {
+    height: 400px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    height: 350px;
+
+    &:before {
+      background-position: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
   }
 `;
 
@@ -206,9 +227,9 @@ const NewBackgroundShape = (
 
 const ChatGuide = () => {
   return (
-    <Grid reversed="mobile">
+    <Grid>
       <Row>
-        <Column computer={8} mobile={16}>
+        <Column computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <AnimationHeading alignment="left">
               Robotten stiller dig spørgsmål
@@ -221,7 +242,7 @@ const ChatGuide = () => {
             </AnimationDescription>
           </ContentWrapper>
         </Column>
-        <BackgroundColumn computer={8} mobile={16}>
+        <BackgroundColumn computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
               <ChatBubble>
@@ -232,8 +253,8 @@ const ChatGuide = () => {
         </BackgroundColumn>
       </Row>
 
-      <Row>
-        <BackgroundColumn inverted={true} computer={8} mobile={16}>
+      <ReverseRow>
+        <BackgroundColumn inverted={true} computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
               <ChatChoicesWrapper>
@@ -243,7 +264,7 @@ const ChatGuide = () => {
             </ScrollAnimation>
           </ContentWrapper>
         </BackgroundColumn>
-        <Column computer={8} mobile={16}>
+        <Column computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <AnimationHeading alignment="left">
               Svar på robottens spørgsmål
@@ -257,10 +278,10 @@ const ChatGuide = () => {
             </AnimationDescription>
           </ContentWrapper>
         </Column>
-      </Row>
+      </ReverseRow>
 
       <Row>
-        <Column computer={8} mobile={16}>
+        <Column computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <AnimationHeading alignment="left">
               Køb en skræddersyet klage
@@ -273,7 +294,7 @@ const ChatGuide = () => {
             </AnimationDescription>
           </ContentWrapper>
         </Column>
-        <BackgroundColumn computer={8} mobile={16}>
+        <BackgroundColumn computer={8} tablet={8} mobile={16}>
           <ContentWrapper>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
               <PaymentWindow>

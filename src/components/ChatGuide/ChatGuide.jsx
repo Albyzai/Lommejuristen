@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
 import ScrollAnimation from 'react-animate-on-scroll';
 import ColumnBG from '../../assets/images/columnbg.svg';
+import CTABUtton from '../CTAButton/CTAButton';
 
 const WrapperGrid = styled(Grid)`
   padding-bottom: 150px;
@@ -241,6 +242,7 @@ const ChatGuide = () => {
               næste gang. På denne måde får robotten indsnævret din
               problemstilling
             </AnimationDescription>
+            <CTABUtton>Start robotten</CTABUtton>
           </ContentWrapper>
         </Column>
         <BackgroundColumn computer={8} tablet={8} mobile={16}>

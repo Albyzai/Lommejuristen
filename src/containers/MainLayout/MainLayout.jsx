@@ -43,8 +43,6 @@ import MaerskLogo from '../../assets/images/maersk-logo.svg';
 import LegoLogo from '../../assets/images/lego-logo.svg';
 import IntroBG from '../../assets/images/introbg.svg';
 
-const navItems = [{ name: 'Artikler' }];
-
 const cards = [
   {
     color: 'blue',
@@ -368,7 +366,6 @@ const MainLayout = () => {
 
   return (
     <>
-      <HeaderNavigation navItems={navItems} />
       <IntroContainer fluid>
         <StyledContainer
           style={{ paddingTop: '200px', paddingBottom: '100px' }}

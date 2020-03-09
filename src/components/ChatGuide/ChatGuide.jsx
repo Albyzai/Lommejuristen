@@ -56,6 +56,7 @@ const BackgroundColumn = styled(Column)`
       background-position: center;
       margin-top: 40px;
       margin-bottom: 40px;
+      transform: none;
     }
   }
 `;

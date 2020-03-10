@@ -4,7 +4,7 @@ import './App.css';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/HeaderNavigation/HeaderNavigation';
-// import ChatBotLayout from './containers/ChatBotLayout/ChatBotLayout';
+import ChatBotLayout from './containers/ChatBotLayout/ChatBotLayout';
 
 const navItems = [
   { name: 'Artikler', url: '/artikler' },
@@ -18,7 +18,7 @@ const app = () => {
         <Nav navItems={navItems} />
         <Switch>
           <Route path="/" exact component={MainLayout} />
-          {/* <Route path="/app" component={ChatBotLayout} /> */}
+          <Route path="/app" component={ChatBotLayout} />
         </Switch>
       </div>
     </Router>

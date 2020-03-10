@@ -100,7 +100,8 @@ const FAQOptions = [
 const FooterItems = {
   contactInfo: [
     '+45 28 40 45 00',
-    'Åbningstider: Mandag-Fredag: 8-16 \n Lørdag-Søndag: lukket'
+    'Mandag-Fredag: 8-16',
+    'Lørdag-Søndag: lukket'
   ],
   socialMedia: ['Facebook', 'Medium', 'Twitter'],
   company: ['Om os', 'Blog', 'Presse'],
@@ -203,6 +204,21 @@ const ContentWrapperCenter = styled.div`
   z-index: 1;
 `;
 
+const FooterContentWrapperCenter = styled(ContentWrapperCenter)`
+  li {
+    text-align: center;
+  }
+  @media only screen and (min-width: 767px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+
+    li {
+      text-align: left;
+    }
+  }
+`;
+
 const FooterHeading = styled.h3`
   text-align: left;
   font-weight: 700;
@@ -293,58 +309,58 @@ const CompanySection = (
 );
 
 const FooterContactInfo = (
-  <>
+  <FooterContentWrapperCenter>
     <FooterHeading>Lommejuristen</FooterHeading>
     <FooterList>
       {FooterItems.contactInfo.map((item) => (
         <li>{item}</li>
       ))}
     </FooterList>
-  </>
+  </FooterContentWrapperCenter>
 );
 
 const FooterSocialmedia = (
-  <>
+  <FooterContentWrapperCenter>
     <FooterHeading>Følg Os</FooterHeading>
     <FooterList>
       {FooterItems.socialMedia.map((item) => (
         <li>{item}</li>
       ))}
     </FooterList>
-  </>
+  </FooterContentWrapperCenter>
 );
 
 const FooterCompany = (
-  <>
+  <FooterContentWrapperCenter>
     <FooterHeading>Virksomhed</FooterHeading>
     <FooterList>
       {FooterItems.company.map((item) => (
         <li>{item}</li>
       ))}
     </FooterList>
-  </>
+  </FooterContentWrapperCenter>
 );
 
 const FooterProduct = (
-  <>
+  <FooterContentWrapperCenter>
     <FooterHeading>Produkt</FooterHeading>
     <FooterList>
       {FooterItems.product.map((item) => (
         <li>{item}</li>
       ))}
     </FooterList>
-  </>
+  </FooterContentWrapperCenter>
 );
 
 const FooterLaw = (
-  <>
+  <FooterContentWrapperCenter>
     <FooterHeading>Juridisk</FooterHeading>
     <FooterList>
       {FooterItems.law.map((item) => (
         <li>{item}</li>
       ))}
     </FooterList>
-  </>
+  </FooterContentWrapperCenter>
 );
 
 const MainLayout = () => {
@@ -438,19 +454,19 @@ const MainLayout = () => {
               <Divider />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Column computer={4} mobile={6}>
+          <Grid.Column computer={4} tablet={6} mobile={8}>
             {FooterContactInfo}
           </Grid.Column>
-          <Grid.Column computer={3} mobile={5}>
+          <Grid.Column computer={3} tablet={5} mobile={8}>
             {FooterSocialmedia}
           </Grid.Column>
-          <Grid.Column computer={3} mobile={5}>
+          <Grid.Column computer={3} tablet={5} mobile={8}>
             {FooterCompany}
           </Grid.Column>
-          <Grid.Column computer={3} mobile={5}>
+          <Grid.Column computer={3} tablet={5} mobile={8}>
             {FooterProduct}
           </Grid.Column>
-          <Grid.Column computer={3} mobile={5}>
+          <Grid.Column computer={3} tablet={5} mobile={8}>
             {FooterLaw}
           </Grid.Column>
           <Grid.Row>

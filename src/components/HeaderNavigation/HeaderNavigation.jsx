@@ -84,6 +84,12 @@ const NavLink = styled(Link)`
   }
 `;
 
+const NavItemDesktop = styled(NavItem)`
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+`;
+
 const StyledLogo = styled.img`
   display: block;
   height: 100%;
@@ -130,11 +136,11 @@ const HeaderNavigation = ({ navItems }) => {
           <NavWrapper>
             <NavList>
               {navItems.map((item) => (
-                <NavItem>
+                <NavItemDesktop>
                   <NavLink scrolled={scrolled} to={item.url}>
                     {item.name}
                   </NavLink>
-                </NavItem>
+                </NavItemDesktop>
               ))}
               <NavItem>
                 <Link to="/app">

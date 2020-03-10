@@ -5,6 +5,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/HeaderNavigation/HeaderNavigation';
 import ChatBotLayout from './containers/ChatBotLayout/ChatBotLayout';
+import DrawerNavigation from './components/DrawerNavigation/DrawerNavigation';
 
 const navItems = [
   { name: 'Artikler', url: '/artikler' },
@@ -16,10 +17,12 @@ const app = () => {
     <Router>
       <div className="App">
         <Nav navItems={navItems} />
-        <Switch>
-          <Route path="/" exact component={MainLayout} />
-          <Route path="/app" component={ChatBotLayout} />
-        </Switch>
+        <DrawerNavigation navItems={navItems}>
+          <Switch>
+            <Route path="/" exact component={MainLayout} />
+            <Route path="/app" component={ChatBotLayout} />
+          </Switch>
+        </DrawerNavigation>
       </div>
     </Router>
   );

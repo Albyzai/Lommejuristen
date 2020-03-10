@@ -257,6 +257,14 @@ const CopyrightText = styled.p`
   text-align: center;
 `;
 
+const StyledColumn = styled(Grid.Column)`
+  @media only screen and (max-width: 767px) {
+    &:not(:last-child) {
+      padding-bottom: 50px;
+    }
+  }
+`;
+
 const IntroText = (
   <ContentWrapperCenter>
     <IntroSloganText>
@@ -289,21 +297,21 @@ const CompanySection = (
       elsker os.
     </SubHeading>
     <Grid className={classes.LogosWrapper}>
-      <Grid.Column computer={4} mobile={8}>
+      <StyledColumn computer={4} mobile={8}>
         <img src={DRLogo} alt="DR" />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={8}>
+      </StyledColumn>
+      <StyledColumn computer={4} mobile={8}>
         <img src={LegoLogo} alt="LEGO" />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={8}>
+      </StyledColumn>
+      <StyledColumn computer={4} mobile={8}>
         <img src={TV2Logo} alt="TV2" />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={8}>
+      </StyledColumn>
+      <StyledColumn computer={4} mobile={8}>
         <img src={TaenkLogo} alt="Taenk" />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={8}>
+      </StyledColumn>
+      <StyledColumn computer={4} mobile={8}>
         <img src={MaerskLogo} alt="MAERSK" />
-      </Grid.Column>
+      </StyledColumn>
     </Grid>
   </>
 );
@@ -373,7 +381,7 @@ const MainLayout = () => {
   });
 
   const Cards = trail.map((props, index) => (
-    <Grid.Column computer={4} tablet={4} mobile={16} key={index}>
+    <StyledColumn computer={4} tablet={4} mobile={16} key={index}>
       <animated.div style={props}>
         <NewCard
           withArrow={trail.length !== index + 1 ? true : false}
@@ -382,18 +390,18 @@ const MainLayout = () => {
           text={cards[index].text}
         ></NewCard>
       </animated.div>
-    </Grid.Column>
+    </StyledColumn>
   ));
 
   const LawCards = lawAreas.map((card) => (
-    <Grid.Column computer={8} mobile={16}>
+    <StyledColumn computer={8} mobile={16}>
       <NewCard
         icon={card.icon}
         title="Købeloven"
         text="Har du købt et TV, fået en håndværker til at udføre noget arbejde, eller har du lånt en ting? Robotten kan hjælpe dig med alle de problemer du møder i hverdagen."
         alignment="horizontal"
       ></NewCard>
-    </Grid.Column>
+    </StyledColumn>
   ));
 
   return (
@@ -402,21 +410,21 @@ const MainLayout = () => {
         <IntroductionContainer>
           <Grid centered>
             <Grid.Row>
-              <Grid.Column computer={9} tablet={8} mobile={16}>
+              <StyledColumn computer={9} tablet={8} mobile={16}>
                 {IntroText}
-              </Grid.Column>
-              <Grid.Column computer={7} tablet={8} mobile={16}>
+              </StyledColumn>
+              <StyledColumn computer={7} tablet={8} mobile={16}>
                 {IntroPhone}
-              </Grid.Column>
+              </StyledColumn>
             </Grid.Row>
           </Grid>
         </IntroductionContainer>
         <StyledContainer>
           <Grid>
             <Grid.Row>
-              <Grid.Column computer={16}>
+              <StyledColumn computer={16}>
                 <HeadingWhite>En problemfri sagsbehandling</HeadingWhite>
-              </Grid.Column>
+              </StyledColumn>
             </Grid.Row>
             {Cards}
           </Grid>
@@ -426,9 +434,9 @@ const MainLayout = () => {
       <StyledContainer>
         <Grid>
           <Grid.Row>
-            <Grid.Column computer={16}>
+            <StyledColumn computer={16}>
               <HeadingDark>Lovområder</HeadingDark>
-            </Grid.Column>
+            </StyledColumn>
           </Grid.Row>
           {LawCards}
         </Grid>
@@ -439,42 +447,42 @@ const MainLayout = () => {
       <StyledContainer>
         <HeadingDarkCentered>FAQ</HeadingDarkCentered>
         <Grid centered>
-          <Grid.Column computer={8} tablet={8} mobile={16}>
+          <StyledColumn computer={8} tablet={8} mobile={16}>
             <Accordion options={FAQOptions} />
-          </Grid.Column>
-          <Grid.Column computer={8} tablet={8} mobile={16}>
+          </StyledColumn>
+          <StyledColumn computer={8} tablet={8} mobile={16}>
             <Accordion options={FAQOptions} />
-          </Grid.Column>
+          </StyledColumn>
         </Grid>
       </StyledContainer>
       <footer>
         <Grid container centered>
           <Grid.Row>
-            <Grid.Column computer={16}>
+            <StyledColumn computer={16}>
               <Divider />
-            </Grid.Column>
+            </StyledColumn>
           </Grid.Row>
-          <Grid.Column computer={4} tablet={6} mobile={8}>
+          <StyledColumn computer={4} tablet={6} mobile={8}>
             {FooterContactInfo}
-          </Grid.Column>
-          <Grid.Column computer={3} tablet={5} mobile={8}>
+          </StyledColumn>
+          <StyledColumn computer={3} tablet={5} mobile={8}>
             {FooterSocialmedia}
-          </Grid.Column>
-          <Grid.Column computer={3} tablet={5} mobile={8}>
+          </StyledColumn>
+          <StyledColumn computer={3} tablet={5} mobile={8}>
             {FooterCompany}
-          </Grid.Column>
-          <Grid.Column computer={3} tablet={5} mobile={8}>
+          </StyledColumn>
+          <StyledColumn computer={3} tablet={5} mobile={8}>
             {FooterProduct}
-          </Grid.Column>
-          <Grid.Column computer={3} tablet={5} mobile={8}>
+          </StyledColumn>
+          <StyledColumn computer={3} tablet={5} mobile={8}>
             {FooterLaw}
-          </Grid.Column>
+          </StyledColumn>
           <Grid.Row>
-            <Grid.Column computer={16}>
+            <StyledColumn computer={16}>
               <CopyrightText>
                 &copy; 2020 JurNordica ApS. Alle rettigheder forbeholdes.
               </CopyrightText>
-            </Grid.Column>
+            </StyledColumn>
           </Grid.Row>
         </Grid>
       </footer>

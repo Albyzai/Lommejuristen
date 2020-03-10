@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const LandbotContainer = styled.div`
   width: 100%;
   height: 100vh;
-  background: green;
+  padding-top: 100px;
+  background-image: linear-gradient(130deg, #0700dd 0%, #00f2ff 89%);
 `;
 
 class ChatBotLayout extends React.Component {

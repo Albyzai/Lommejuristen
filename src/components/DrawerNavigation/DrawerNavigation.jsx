@@ -83,6 +83,8 @@ const StyledLogo = styled.img`
 
 const StyledCTAButton = styled(CTAButton)`
   margin-top: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   width: 100%;
 `;
 
@@ -130,7 +132,9 @@ const DrawerNavigation = ({ navItems, visible, children }) => {
                 </NavItem>
               ))}
             </NavList>
-            <StyledCTAButton>Start robotten</StyledCTAButton>
+            <Link to="/app">
+              <StyledCTAButton>Start robotten</StyledCTAButton>
+            </Link>
           </StickyWrapper>
         </StyledSidebar>
 
